@@ -19,17 +19,17 @@ export default async function CategoryPage({ params }: Props) {
   const products = seedProducts.filter((product) => product.gender === id);
 
   const labels: Record<Category, string> = {
-    men: "para Hombres",
-    women: "para Mujeres",
-    kid: "para Niños",
-    unisex: "para Unisex",
+    men: "para hombres",
+    women: "para mujeres",
+    kid: "para niños",
+    unisex: "para unisex",
   };
 
   const subtitleLabel: Record<Category, string> = {
     men: "Productos para él",
     women: "Productos para ella",
-    kid: "Productos para los mas chicos",
-    unisex: "Todos los productos para Unisex",
+    kid: "Productos para los niños",
+    unisex: "Todos los productos para todes xD",
   };
   // if (id === "kids") {
   //   notFound();
