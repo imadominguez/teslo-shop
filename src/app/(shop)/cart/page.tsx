@@ -50,7 +50,7 @@ export default function CartPage() {
             ))}
           </div>
           {/* Summary */}
-          <div className="flex flex-col rounded-xl bg-white p-7 shadow-xl">
+          <div className=" h-fit rounded-xl bg-white p-7 shadow-xl">
             <h2 className="mb-2 text-2xl">Resumen de orden</h2>
             <div className="grid grid-cols-2">
               <span>No Productos</span>
