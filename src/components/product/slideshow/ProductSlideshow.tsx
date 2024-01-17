@@ -41,7 +41,7 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         className="mySwiper2"
       >
         {images.map((image) => (
-          <SwiperSlide>
+          <SwiperSlide key={image}>
             <Image
               src={`/products/${image}`}
               width={1024}
@@ -62,7 +62,7 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         className="mySwiper"
       >
         {images.map((image) => (
-          <SwiperSlide>
+          <SwiperSlide key={image}>
             <Image
               src={`/products/${image}`}
               width={1024}
