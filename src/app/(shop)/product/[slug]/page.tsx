@@ -14,7 +14,12 @@ interface Props {
     slug: string;
   };
 }
-
+export async function generateStaticParams() {
+  const products = initialData.products;
+  return products.map((product) => ({
+    slug: product.slug,
+  }));
+}
 export default function ProductPage({ params }: Props) {
   const { slug } = params;
   const product = initialData.products.find((product) => product.slug === slug);
