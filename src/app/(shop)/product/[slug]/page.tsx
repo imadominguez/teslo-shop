@@ -3,15 +3,22 @@ import {
   ProductSlideshow,
   QuantitySelector,
   SizeSelector,
-} from "@/components";
-import { font } from "@/config/fonts";
-import { initialData } from "@/seed/seed";
-import Image from "next/image";
-import { notFound } from "next/navigation";
+} from '@/components';
+import { font } from '@/config/fonts';
+import { initialData } from '@/seed/seed';
+import { notFound } from 'next/navigation';
 
 interface Props {
   params: {
     slug: string;
+  };
+}
+export async function generateMetadata({ params }: any) {
+  const { slug } = params;
+  const product = initialData.products.find((product) => product.slug === slug);
+  return {
+    title: `${product?.title} | Teslo Shop`,
+    description: product?.description,
   };
 }
 export async function generateStaticParams() {
