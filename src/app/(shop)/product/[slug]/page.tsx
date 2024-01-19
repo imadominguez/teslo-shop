@@ -1,11 +1,15 @@
+export const revalidate = 10080;
+
+import { getPaginatedProductsWidthImages, getProductBySlug } from '@/actions';
 import {
   ProductMobileSlideshow,
   ProductSlideshow,
   QuantitySelector,
   SizeSelector,
+  StockLabel,
 } from '@/components';
 import { font } from '@/config/fonts';
-import { initialData } from '@/seed/seed';
+import { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -13,23 +17,47 @@ interface Props {
     slug: string;
   };
 }
-export async function generateMetadata({ params }: any) {
-  const { slug } = params;
-  const product = initialData.products.find((product) => product.slug === slug);
+// export async function generateMetadata({ params }: any) {
+//   const { slug } = params;
+//   const product = await getProductBySlug(slug);
+//   return {
+//     title: `${product?.title} | Teslo Shop`,
+//     description: product?.description,
+//   };
+// }
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  // read route params
+  const slug = params.slug;
+
+  // fetch data
+  const product = await getProductBySlug(slug);
+
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+
   return {
-    title: `${product?.title} | Teslo Shop`,
+    title: product?.title,
     description: product?.description,
+    openGraph: {
+      title: product?.title,
+      description: product?.description,
+      images: [`/products/${product?.images[1]}`],
+      // images: ['/some-specific-page-image.jpg', ...previousImages],
+    },
   };
 }
-export async function generateStaticParams() {
-  const products = initialData.products;
-  return products.map((product) => ({
-    slug: product.slug,
-  }));
-}
-export default function ProductPage({ params }: Props) {
+// export async function generateStaticParams() {
+//   const { products } = await getPaginatedProductsWidthImages();
+//   return products.map((product) => ({
+//     slug: product.slug,
+//   }));
+// }
+export default async function ProductPage({ params }: Props) {
   const { slug } = params;
-  const product = initialData.products.find((product) => product.slug === slug);
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     notFound();
@@ -57,6 +85,7 @@ export default function ProductPage({ params }: Props) {
 
       {/* Product Info  */}
       <div className="col-span-1  px-5">
+        <StockLabel slug={product.slug} />
         <h1 className={`${font.className} text-xl font-bold antialiased`}>
           {product.title}
         </h1>

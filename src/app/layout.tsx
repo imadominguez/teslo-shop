@@ -1,11 +1,14 @@
-import type { Metadata } from "next";
-import { inter } from "@/config/fonts";
+import type { Metadata } from 'next';
+import { inter } from '@/config/fonts';
 
-import "./globals.css";
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Teslo | SHOP",
-  description: "Una tienda virtual de productos de ropa",
+  title: {
+    template: '%s - Teslo | SHOP',
+    default: 'Home',
+  },
+  description: 'Una tienda virtual de productos de ropa',
 };
 
 export default function RootLayout({
