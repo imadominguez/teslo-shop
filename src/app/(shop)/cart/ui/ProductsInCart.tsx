@@ -19,7 +19,7 @@ export const ProductsInCart = () => {
 
   useEffect(() => {
     setLoaded(true);
-  });
+  }, []);
 
   if (!loaded) {
     return Array.from({ length: 3 }, (_, i) => <ProductItemSkeleton key={i} />);

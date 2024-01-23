@@ -13,7 +13,7 @@ export const StockLabel = ({ slug }: Props) => {
 
   useEffect(() => {
     getStock();
-  }, []);
+  });
 
   const getStock = async () => {
     const inStock = await getStockBySlug(slug);
