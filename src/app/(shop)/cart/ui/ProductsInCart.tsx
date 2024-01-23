@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { QuantitySelector } from '@/components';
 import { useCartStore } from '@/store';
 import { ProductItemSkeleton } from './ProductItemSkeleton';
+import { redirect } from 'next/navigation';
 
 export const ProductsInCart = () => {
   const [loaded, setLoaded] = useState(false);
@@ -23,6 +24,9 @@ export const ProductsInCart = () => {
 
   if (!loaded) {
     return Array.from({ length: 3 }, (_, i) => <ProductItemSkeleton key={i} />);
+  }
+  if (productsInCart.length === 0) {
+    redirect('/empty');
   }
 
   return (
