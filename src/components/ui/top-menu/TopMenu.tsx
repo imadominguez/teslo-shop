@@ -15,8 +15,9 @@ export const TopMenu = () => {
   useEffect(() => {
     setLoaded(true);
   }, []);
+
   return (
-    <nav className="mx-auto flex  w-full  max-w-[100rem] items-center justify-between bg-gradient-to-b  from-gray-300 to-transparent px-5 2xl:bg-transparent 2xl:bg-none">
+    <nav className="mx-auto flex  w-full max-w-[100rem]  items-center justify-between bg-gradient-to-b from-gray-500/30  to-transparent  px-5 pb-5 2xl:bg-transparent 2xl:bg-none">
       {/* Logo */}
       <div>
         <Link href={'/'}>
