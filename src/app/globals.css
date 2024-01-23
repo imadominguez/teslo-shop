@@ -25,8 +25,16 @@ body {
       rgb(var(--background-start-rgb))
     )
     rgb(var(--background-end-rgb));
+  scrollbar-width: thin;
+  scrollbar-color: grey;
 }
-
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 4px;
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;
