@@ -1,3 +1,5 @@
+'use client';
+
 import { SizeSelector, QuantitySelector } from '@/components';
 import { CartProduct, Product } from '@/interfaces';
 import { useCartStore } from '@/store';

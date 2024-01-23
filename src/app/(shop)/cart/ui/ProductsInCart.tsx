@@ -1,3 +1,4 @@
+'use client';
 import { useState, useEffect } from 'react';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
