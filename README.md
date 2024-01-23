@@ -10,22 +10,22 @@ Teslo-Shop es una plataforma de comercio electrónico completa que aprovecha las
 
 Sigue estos pasos para configurar el proyecto en tu entorno de desarrollo:
 
-1. Clonar el repositorio `git clone https://github.com/tuusuario/teslo-shop.git` `cd teslo-shop`
+1. Clonar el repositorio `git clone https://github.com/tuusuario/teslo-shop.git` y luego `cd teslo-shop`
 
-2. Configurar variables de entorno:
+2. Configura las variables de entorno:
 
-   - Crea una copia del archivo .env.template y renómbralo a .env.
+   - Crea una copia del archivo `.env.template` y renómbralo a `.env`.
    - Modifica las variables de entorno según tus necesidades.
 
-3. Instalar dependencias `npm install`
+3. Instala las dependencias `npm install`
 
-4. Levantar la base de datos: `docker compose up -d`
+4. Levanta la base de datos: `docker compose up -d`
 
-5. Correr migraciones de Prisma: `npx prisma migrate dev`
+5. Ejecuta las migraciones de Prisma: `npx prisma migrate dev`
 
-6. Ejectuar el seed `npm run seed`
+6. Ejecuta el seed `npm run seed`
 
-7. Correr el proyecto en modo desarrollo: `npm run dev`
+7. Inicia el proyecto en modo desarrollo: `npm run dev`
 
 ## Cómo correr en producción
 
