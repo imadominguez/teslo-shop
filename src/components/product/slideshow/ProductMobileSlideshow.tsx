@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
-import "./slideshow.css";
-import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
+import './slideshow.css';
+import { Autoplay, FreeMode, Navigation, Pagination } from 'swiper/modules';
 
 interface Props {
   images: string[];
@@ -20,8 +20,8 @@ export const ProductMobileSlideshow = ({ images, title, className }: Props) => {
     <div className={className}>
       <Swiper
         style={{
-          width: "100vw",
-          height: "500px",
+          width: '100vw',
+          height: '42dvh',
         }}
         pagination
         autoplay={{
