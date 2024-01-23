@@ -1,11 +1,20 @@
+'use client';
 import Link from 'next/link';
 
 import { IoSearchOutline, IoCartOutline } from 'react-icons/io5';
 
 import { font } from '@/config/fonts';
 import { BtnCloseMenu } from './btn-close-menu';
+import { useCartStore } from '@/store';
+import { useEffect, useState } from 'react';
 
 export const TopMenu = () => {
+  const totalItemsInCart = useCartStore((state) => state.getTotalItems());
+
+  const [loaded, setLoaded] = useState<boolean>(false);
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
   return (
     <nav className="flex  w-full items-center justify-between px-5 backdrop-blur">
       {/* Logo */}
@@ -45,11 +54,17 @@ export const TopMenu = () => {
         <Link href={'/search'} className="mx-2">
           <IoSearchOutline className="h-5 w-5" />
         </Link>
-        <Link href={'/cart'} className="mx-2">
+        <Link
+          href={`${totalItemsInCart === 0 && loaded ? '/empty' : '/cart'}`}
+          className=" mx-2"
+        >
           <div className="relative">
-            <span className="absolute -right-2 -top-2 rounded-full  bg-orange-700 px-1 text-xs font-bold text-white">
-              3
-            </span>
+            {loaded && totalItemsInCart > 0 && (
+              <span className="fade-in absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-orange-700  px-1 text-center text-xs font-bold text-white">
+                {totalItemsInCart === 0 ? '' : totalItemsInCart}
+              </span>
+            )}
+
             <IoCartOutline className="h-5 w-5" />
           </div>
         </Link>
