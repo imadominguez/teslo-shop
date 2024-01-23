@@ -16,7 +16,7 @@ export const TopMenu = () => {
     setLoaded(true);
   }, []);
   return (
-    <nav className="flex  w-full items-center justify-between px-5 backdrop-blur">
+    <nav className="mx-auto flex  w-full  max-w-[100rem] items-center justify-between bg-gradient-to-b  from-gray-300 to-transparent px-5 2xl:bg-transparent 2xl:bg-none">
       {/* Logo */}
       <div>
         <Link href={'/'}>

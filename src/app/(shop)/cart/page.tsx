@@ -9,7 +9,7 @@ export default function CartPage() {
   //  redirect('/empty');
 
   return (
-    <div className="mb-72 flex items-center justify-center px-10 sm:px-0">
+    <div className="mb-44 flex items-center justify-center px-10 sm:px-0">
       <div className="flex w-[1000px] flex-col ">
         <Title title="Carrito de compra" />
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 ">
