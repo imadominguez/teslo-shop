@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 interface State {
   isSideMenuOpen: boolean;
@@ -8,6 +8,10 @@ interface State {
 
 export const useUiStore = create<State>()((set) => ({
   isSideMenuOpen: false,
+
+  // Método para abrir el menú lateral
   openSideMenu: () => set({ isSideMenuOpen: true }),
+
+  // Método para cerrar el menú lateral
   closeSideMenu: () => set({ isSideMenuOpen: false }),
 }));

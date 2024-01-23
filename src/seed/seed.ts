@@ -1,22 +1,22 @@
 interface SeedProduct {
-  description: string;
-  images: string[];
-  inStock: number;
-  price: number;
-  sizes: ValidSizes[];
-  slug: string;
-  tags: string[];
-  title: string;
-  type: ValidTypes;
-  gender: 'men' | 'women' | 'kid' | 'unisex';
+  description: string; // Descripción del producto
+  images: string[]; // Imágenes asociadas al producto
+  inStock: number; // Cantidad disponible en stock
+  price: number; // Precio del producto
+  sizes: ValidSizes[]; // Tallas disponibles para el producto
+  slug: string; // Slug del producto para identificación única
+  tags: string[]; // Etiquetas relacionadas al producto
+  title: string; // Título del producto
+  type: ValidTypes; // Tipo de producto (camisas, pantalones, sudaderas, etc.)
+  gender: 'men' | 'women' | 'kid' | 'unisex'; // Género del producto
 }
 
-type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL';
-type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats';
+type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL'; // Tallas válidas para los productos
+type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats'; // Tipos válidos de productos
 
 interface SeedData {
-  categories: string[];
-  products: SeedProduct[];
+  categories: string[]; // Lista de nombres de categorías
+  products: SeedProduct[]; // Lista de productos a sembrar en la base de datos
 }
 
 export const initialData: SeedData = {

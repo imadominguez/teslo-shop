@@ -5,21 +5,19 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 interface State {
   cart: CartProduct[];
 
-  // ?? Metodos para obtener informacion del carrito
-  getTotalItems: () => number;
-  getSummatyInformation: () => {
+  // Métodos para obtener información del carrito
+  getTotalItems: () => number; // Obtiene el total de items en el carrito
+  getSummaryInformation: () => {
     subTotal: number;
     tax: number;
     total: number;
-    itemsInCart: any;
-  };
-  // ?? Metodos para modificar el carrito de compras
-  // -- Agregar un producto al carrito
-  addProductToCart: (product: CartProduct) => void;
-  // -- Actualizar la cantidad de un producto en el carrito
-  updateProductQuantity: (product: CartProduct, quantity: number) => void;
-  // -- Eliminar un producto del carrito
-  removeProductFromCart: (product: CartProduct) => void;
+    itemsInCart: number;
+  }; // Obtiene un resumen de la información del carrito
+
+  // Métodos para modificar el carrito de compras
+  addProductToCart: (product: CartProduct) => void; // Agrega un producto al carrito
+  updateProductQuantity: (product: CartProduct, quantity: number) => void; // Actualiza la cantidad de un producto en el carrito
+  removeProductFromCart: (product: CartProduct) => void; // Elimina un producto del carrito
 }
 
 const storeApiCart: StateCreator<State> = (set, get) => ({
@@ -30,7 +28,7 @@ const storeApiCart: StateCreator<State> = (set, get) => ({
     return cart.reduce((total, prod) => total + prod.quantity, 0);
   },
   // ------------------------------
-  getSummatyInformation: () => {
+  getSummaryInformation: () => {
     const { cart } = get();
 
     const subTotal = cart.reduce((subTotal, product) => {
