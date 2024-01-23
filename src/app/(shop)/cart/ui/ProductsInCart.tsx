@@ -1,13 +1,12 @@
-'use client';
-
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { QuantitySelector } from '@/components';
 import { useCartStore } from '@/store';
+import { QuantitySelector } from '@/components';
 import { ProductItemSkeleton } from './ProductItemSkeleton';
-import { redirect } from 'next/navigation';
 
+// Componente para mostrar los productos en el carrito
 export const ProductsInCart = () => {
   const [loaded, setLoaded] = useState(false);
   const productsInCart = useCartStore((state) => state.cart);
@@ -22,18 +21,22 @@ export const ProductsInCart = () => {
     setLoaded(true);
   }, []);
 
+  // Si el componente no ha cargado aún, mostrar esqueletos de carga
   if (!loaded) {
     return Array.from({ length: 3 }, (_, i) => <ProductItemSkeleton key={i} />);
   }
+
+  // Si no hay productos en el carrito, redirigir a la página vacía
   if (productsInCart.length === 0) {
     redirect('/empty');
   }
 
   return (
     <>
-      {/* items del carrito */}
+      {/* Iterar sobre los productos en el carrito */}
       {productsInCart.map((product) => (
         <div key={`${product.slug}-${product.size}`} className="mb-5 flex">
+          {/* Imagen del producto */}
           <Image
             src={`/products/${product.image}`}
             alt={product.title}
@@ -44,6 +47,7 @@ export const ProductsInCart = () => {
           />
 
           <div>
+            {/* Enlace al producto */}
             <Link
               className="cursor-pointer font-bold hover:underline"
               href={`/product/${product.slug}`}
@@ -51,12 +55,17 @@ export const ProductsInCart = () => {
               {product.size} - {product.title}
             </Link>
 
+            {/* Precio por unidad */}
             <p className="my-2 font-semibold">
               Precio x unidad: ${product.price}
             </p>
+
+            {/* Precio total */}
             <p>
               Precio total: ${(product.price * product.quantity).toFixed(2)}
             </p>
+
+            {/* Selector de cantidad */}
             <QuantitySelector
               quantity={product.quantity}
               onQuantityChange={(value) =>
@@ -64,6 +73,7 @@ export const ProductsInCart = () => {
               }
             />
 
+            {/* Botón para remover el producto del carrito */}
             <button
               onClick={() => removeProductFromCart(product)}
               className="mt-3 underline"

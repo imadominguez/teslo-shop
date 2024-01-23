@@ -3,25 +3,31 @@ import { useState } from 'react';
 import { Swiper as SwiperObject } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Importación de estilos y módulos Swiper
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 
-import './slideshow.css';
+import './slideshow.css'; // Estilos personalizados
 import { Autoplay, FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import Image from 'next/image';
 
+// Propiedades esperadas para el componente ProductSlideshow
 interface Props {
   images: string[];
   title: string;
   className?: string;
 }
+
+// Componente para mostrar un carrusel de imágenes con miniaturas
 export const ProductSlideshow = ({ images, title, className }: Props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperObject>();
 
   return (
+    // Contenedor principal con la clase proporcionada
     <div className={className}>
+      {/* Carrusel principal con opciones y módulos */}
       <Swiper
         style={
           {
@@ -40,8 +46,10 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         modules={[FreeMode, Navigation, Thumbs, Autoplay]}
         className="mySwiper2"
       >
+        {/* Mapeo de las imágenes para crear los slides del carrusel principal */}
         {images.map((image) => (
           <SwiperSlide key={image}>
+            {/* Imagen de cada slide con atributos y clases */}
             <Image
               src={`/products/${image}`}
               width={1024}
@@ -52,6 +60,8 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* Carrusel de miniaturas con opciones y módulos */}
       <Swiper
         onSwiper={setThumbsSwiper}
         spaceBetween={10}
@@ -61,8 +71,10 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper"
       >
+        {/* Mapeo de las imágenes para crear las miniaturas */}
         {images.map((image) => (
           <SwiperSlide key={image}>
+            {/* Miniatura de cada imagen con atributos y clases */}
             <Image
               src={`/products/${image}`}
               width={1024}

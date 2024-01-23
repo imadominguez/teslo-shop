@@ -1,7 +1,7 @@
-"use client";
-import { useUiStore } from "@/store";
-import clsx from "clsx";
-import Link from "next/link";
+'use client';
+import { useUiStore } from '@/store';
+import clsx from 'clsx';
+import Link from 'next/link';
 import {
   IoCloseOutline,
   IoLogInOutline,
@@ -11,20 +11,21 @@ import {
   IoSearchOutline,
   IoShirtOutline,
   IoTicketOutline,
-} from "react-icons/io5";
+} from 'react-icons/io5';
 
 export const Sidebar = () => {
+  // Obtener el estado del menú lateral abierto y la función para cerrarlo
   const isSideMenuOpen = useUiStore((state) => state.isSideMenuOpen);
   const closeSideMenu = useUiStore((state) => state.closeSideMenu);
 
   return (
     <div className="">
-      {/* background black */}
+      {/* Fondo negro transparente */}
       {isSideMenuOpen && (
         <div className="fixed left-0 top-0 z-10 h-screen w-screen bg-black opacity-30" />
       )}
 
-      {/* Blur  */}
+      {/* Desenfoque */}
       {isSideMenuOpen && (
         <div
           onClick={() => closeSideMenu()}
@@ -32,24 +33,25 @@ export const Sidebar = () => {
         />
       )}
 
-      {/* Sidemenu */}
+      {/* Menú lateral */}
       <nav
-        // TODO: efecto de slide
+        // TODO: Efecto de deslizamiento
         className={clsx(
-          "fixed right-0 top-0 z-20 h-screen max-w-[500px] transform bg-white p-5 shadow-2xl transition-all duration-300",
+          'fixed right-0 top-0 z-20 h-screen max-w-[500px] transform bg-white p-5 shadow-2xl transition-all duration-300',
           {
-            "translate-x-full": !isSideMenuOpen,
-            "translate-x-0": isSideMenuOpen,
+            'translate-x-full': !isSideMenuOpen,
+            'translate-x-0': isSideMenuOpen,
           },
         )}
       >
+        {/* Botón para cerrar el menú */}
         <IoCloseOutline
           size={50}
           className="absolute right-5 top-5 cursor-pointer"
           onClick={() => closeSideMenu()}
         />
 
-        {/* Input de busqueda */}
+        {/* Input de búsqueda */}
         <div className="relative mt-14">
           <IoSearchOutline size={20} className="absolute left-2 top-2" />
           <input
@@ -59,53 +61,54 @@ export const Sidebar = () => {
           />
         </div>
 
+        {/* Enlaces del menú */}
         <Link
-          href={"/"}
+          href={'/'}
           className="mt-10 flex items-center rounded p-2 transition-all hover:bg-gray-100"
         >
           <IoPersonOutline size={30} />
           <span className="ml-3 text-xl">Perfil</span>
         </Link>
         <Link
-          href={"/orders"}
+          href={'/orders'}
           className="mt-10 flex items-center rounded p-2 transition-all hover:bg-gray-100"
         >
           <IoTicketOutline size={30} />
           <span className="ml-3 text-xl">Ordenes</span>
         </Link>
         <Link
-          href={"/"}
+          href={'/'}
           className="mt-10 flex items-center rounded p-2 transition-all hover:bg-gray-100"
         >
           <IoLogInOutline size={30} />
           <span className="ml-3 text-xl">Ingresar</span>
         </Link>
         <Link
-          href={"/"}
+          href={'/'}
           className="mt-10 flex items-center rounded p-2 transition-all hover:bg-gray-100"
         >
           <IoLogOutOutline size={30} />
-          <span className="ml-3 text-xl">Cerrar Sesion</span>
+          <span className="ml-3 text-xl">Cerrar Sesión</span>
         </Link>
 
         <div className="my-10 h-px w-full bg-gray-200" />
 
         <Link
-          href={"/"}
+          href={'/'}
           className="mt-10 flex items-center rounded p-2 transition-all hover:bg-gray-100"
         >
           <IoShirtOutline size={30} />
           <span className="ml-3 text-xl">Productos</span>
         </Link>
         <Link
-          href={"/"}
+          href={'/'}
           className="mt-10 flex items-center rounded p-2 transition-all hover:bg-gray-100"
         >
           <IoTicketOutline size={30} />
           <span className="ml-3 text-xl">Ordenes</span>
         </Link>
         <Link
-          href={"/"}
+          href={'/'}
           className="mt-10 flex items-center rounded p-2 transition-all hover:bg-gray-100"
         >
           <IoPeopleOutline size={30} />
