@@ -11,20 +11,13 @@ import {
 import { font } from '@/config/fonts';
 import { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
+import { AddToCart } from './ui/AddToCart';
 
 interface Props {
   params: {
     slug: string;
   };
 }
-// export async function generateMetadata({ params }: any) {
-//   const { slug } = params;
-//   const product = await getProductBySlug(slug);
-//   return {
-//     title: `${product?.title} | Teslo Shop`,
-//     description: product?.description,
-//   };
-// }
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
@@ -39,13 +32,13 @@ export async function generateMetadata(
   // const previousImages = (await parent).openGraph?.images || []
 
   return {
-    title: product?.title,
-    description: product?.description,
+    title: product?.title ?? 'Producto no encontrado',
+    description: product?.description ?? '',
     openGraph: {
-      title: product?.title,
-      description: product?.description,
+      title: product?.title ?? 'Producto no encontrado',
+      description: product?.description ?? '',
+      // images: [], // https://misitioweb.com/products/image.png
       images: [`/products/${product?.images[1]}`],
-      // images: ['/some-specific-page-image.jpg', ...previousImages],
     },
   };
 }
@@ -92,15 +85,7 @@ export default async function ProductPage({ params }: Props) {
 
         <p className="mb-5 text-lg">{product.price}</p>
 
-        {/* Selector de Tallas */}
-        <SizeSelector
-          selectedSize={product.sizes[0]}
-          availableSize={product.sizes}
-        />
-        {/* Selector de Cantidad */}
-        <QuantitySelector quantity={2} />
-        {/* Boton agregar al carrito */}
-        <button className="btn-primary my-5">Agregar al carrito</button>
+        <AddToCart product={product} />
         {/* Descripcion del producto  */}
         <h3 className="text-sm font-bold ">Descripcion</h3>
         <p className="font-light">{product.description}</p>
