@@ -8,9 +8,10 @@ async function main() {
   await prisma.productImage.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
+  await prisma.user.deleteMany();
 
-  // Obtén las categorías y productos de los datos de prueba
-  const { categories, products } = initialData;
+  // Obtén los datos de prueba
+  const { categories, products, users } = initialData;
 
   // Crea registros de categorías
   const categoriesData = categories.map((category) => ({
@@ -51,6 +52,12 @@ async function main() {
     }));
     await prisma.productImage.createMany({
       data: imagesData,
+    });
+  });
+
+  users.forEach(async (user) => {
+    await prisma.user.create({
+      data: user,
     });
   });
 

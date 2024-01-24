@@ -1,3 +1,4 @@
+import bcryptjs from 'bcryptjs';
 interface SeedProduct {
   description: string; // Descripción del producto
   images: string[]; // Imágenes asociadas al producto
@@ -13,14 +14,23 @@ interface SeedProduct {
 
 type ValidSizes = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL'; // Tallas válidas para los productos
 type ValidTypes = 'shirts' | 'pants' | 'hoodies' | 'hats'; // Tipos válidos de productos
+type SeedRole = 'user' | 'admin';
 
+type SeedUser = {
+  name: string;
+  email: string;
+  password: string;
+  role: SeedRole;
+};
 interface SeedData {
   categories: string[]; // Lista de nombres de categorías
   products: SeedProduct[]; // Lista de productos a sembrar en la base de datos
+  users: SeedUser[];
 }
 
 export const initialData: SeedData = {
   categories: ['shirts', 'pants', 'hoodies', 'hats'],
+
   products: [
     {
       description:
@@ -699,6 +709,21 @@ export const initialData: SeedData = {
       tags: ['shirt'],
       title: 'Kids Corp Jacket',
       gender: 'kid',
+    },
+  ],
+
+  users: [
+    {
+      email: 'user-user@gmail.com',
+      password: bcryptjs.hashSync('123456'),
+      role: 'user',
+      name: 'User User',
+    },
+    {
+      email: 'user-admin@gmail.com',
+      password: bcryptjs.hashSync('123456'),
+      role: 'admin',
+      name: 'User Admin',
     },
   ],
 };
