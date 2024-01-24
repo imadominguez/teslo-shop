@@ -34,12 +34,12 @@ export async function generateMetadata(
   return {
     title: product?.title ?? 'Producto no encontrado',
     description: product?.description ?? '',
-    openGraph: {
-      title: product?.title ?? 'Producto no encontrado',
-      description: product?.description ?? '',
-      // images: [], // https://misitioweb.com/products/image.png
-      images: [`/products/${product?.images[1]}`],
-    },
+    // openGraph: {
+    //   title: product?.title ?? 'Producto no encontrado',
+    //   description: product?.description ?? '',
+    //   // images: [], // https://misitioweb.com/products/image.png
+    //   images: [`/products/${product?.images[1]}`],
+    // },
   };
 }
 // export async function generateStaticParams() {
