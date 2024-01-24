@@ -9,7 +9,7 @@ export default function ShopLayout({
     <main className="relative min-h-screen">
       <TopMenu />
       <Sidebar />
-      <div className="mx-auto min-h-[calc(100vh-150px)] max-w-7xl md:px-10">
+      <div className="mx-auto min-h-[calc(100vh-150px)] max-w-7xl px-7 md:px-10">
         {children}
       </div>
       <Footer />

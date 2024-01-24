@@ -1,12 +1,23 @@
 'use client';
 
 import Link from 'next/link';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/actions';
+import { IoInformationCircleOutline } from 'react-icons/io5';
+import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function LoginForm() {
+  const router = useRouter();
   const [state, dispatch] = useFormState(authenticate, undefined);
-  console.log({ state });
+
+  useEffect(() => {
+    if (state === 'Success') {
+      router.replace('/');
+    }
+  }, [state]);
+
   return (
     <form action={dispatch} className="flex flex-col">
       <label htmlFor="email">Correo electrónico</label>
@@ -22,10 +33,31 @@ export default function LoginForm() {
         type="password"
         name="password"
       />
-
-      <button type="submit" className="btn-primary">
-        Ingresar
-      </button>
+      <div
+        className="flex h-8 items-end space-x-1"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div
+          className="mb-3 flex h-8 items-end space-x-1 font-semibold"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {state === 'Credenciales incorrectas' && (
+            <>
+              <IoInformationCircleOutline className="h-5 w-5  text-red-500" />
+              <p className="text-sm  text-red-500">Credenciales incorrectas</p>
+            </>
+          )}
+          {state === 'Success' && (
+            <>
+              <IoInformationCircleOutline className="h-5 w-5  text-green-500" />
+              <p className="text-sm  text-green-500">Credenciales correctas</p>
+            </>
+          )}
+        </div>
+      </div>
+      <LoginButton />
 
       {/* divisor l ine */}
       <div className="my-5 flex items-center">
@@ -39,4 +71,20 @@ export default function LoginForm() {
       </Link>
     </form>
   );
+
+  function LoginButton() {
+    const { pending } = useFormStatus();
+
+    return (
+      <button
+        className={clsx('btn-primary', {
+          'btn-disable': pending,
+          'btn-primary': !pending,
+        })}
+        aria-disabled={pending}
+      >
+        Ingresar
+      </button>
+    );
+  }
 }
