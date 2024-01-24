@@ -1,6 +1,7 @@
-export const sleep = () =>
-  new Promise((resolve) => {
+export const sleep = (ms: number) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      resolve;
-    }, 3000); // 3000 milisegundos equivalen a 3 segundos
+      resolve(true);
+    }, ms * 1000); // 3000 milisegundos equivalen a 3 segundos
   });
+};
