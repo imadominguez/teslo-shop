@@ -38,11 +38,28 @@ Table User {
   password String [not null]
   role Role [not null, default: 'user']
   image String
+  Address UserAddress
 }
 
 Table Country {
   id String [pk]
   name String [not null]
+  Address UserAddress [not null]
+}
+
+Table UserAddress {
+  id String [pk]
+  firstName String [not null]
+  lastName String [not null]
+  address String [not null]
+  address2 String
+  postalCode String [not null]
+  phone String [not null]
+  city String [not null]
+  country Country [not null]
+  countryId String [not null]
+  user User [not null]
+  userId String [unique, not null]
 }
 
 Enum Size {
@@ -70,3 +87,7 @@ Enum Role {
 Ref: Product.categoryId > Category.id
 
 Ref: ProductImage.productId > Product.id
+
+Ref: UserAddress.countryId > Country.id
+
+Ref: UserAddress.userId - User.id
