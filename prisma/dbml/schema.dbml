@@ -1,0 +1,67 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Category {
+  id String [pk]
+  name String [unique, not null]
+  Product Product [not null]
+}
+
+Table Product {
+  id String [pk]
+  title String [not null]
+  description String [not null]
+  price Float [not null, default: 0]
+  sizes Size[] [not null]
+  inStock Int [not null]
+  slug String [unique, not null]
+  tags String[] [not null]
+  gender Gender [not null]
+  category Category [not null]
+  categoryId String [not null]
+  ProductImage ProductImage [not null]
+}
+
+Table ProductImage {
+  id String [pk]
+  url String [not null]
+  product Product [not null]
+  productId String [not null]
+}
+
+Table User {
+  id String [pk]
+  name String [not null]
+  email String [unique, not null]
+  emailVerifed DateTime
+  password String [not null]
+  role Role [not null, default: 'user']
+  image String
+}
+
+Enum Size {
+  XS
+  S
+  M
+  L
+  XL
+  XXL
+  XXXL
+}
+
+Enum Gender {
+  men
+  women
+  kid
+  unisex
+}
+
+Enum Role {
+  admin
+  user
+}
+
+Ref: Product.categoryId > Category.id
+
+Ref: ProductImage.productId > Product.id
