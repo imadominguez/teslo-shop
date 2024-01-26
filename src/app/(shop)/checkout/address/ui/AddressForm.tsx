@@ -1,10 +1,16 @@
 'use client';
 
-import type { Country } from '@/interfaces';
-import clsx from 'clsx';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
+import clsx from 'clsx';
 
-interface FormInputs {
+import type { Address, Country } from '@/interfaces';
+import { useAddressStore } from '@/store';
+import { deleteUserAddress, setUserAddress } from '@/actions';
+
+type FormInputs = {
   firstName: string;
   lastName: string;
   address: string;
@@ -14,25 +20,53 @@ interface FormInputs {
   country: string;
   phone: string;
   rememberAddress: boolean;
-}
+};
 
 interface Props {
-  countries?: Country[];
+  countries: Country[];
+  userStoredAddress?: Partial<Address>;
 }
-export const AddressForm = ({ countries }: Props) => {
+
+export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
+  const router = useRouter();
   const {
-    register,
     handleSubmit,
+    register,
     formState: { isValid },
+    reset,
   } = useForm<FormInputs>({
     defaultValues: {
-      // TODO: leer de la base de datos
+      ...(userStoredAddress as any),
+      rememberAddress: false,
     },
   });
 
-  const onSubmit = (data: FormInputs) => {
-    console.log(data);
+  const { data: session } = useSession({
+    required: true,
+  });
+
+  const setAddress = useAddressStore((state) => state.setAddress);
+  const address = useAddressStore((state) => state.address);
+
+  useEffect(() => {
+    if (address.firstName) {
+      reset(address);
+    }
+  }, []);
+
+  const onSubmit = async (data: FormInputs) => {
+    setAddress(data);
+    const { rememberAddress, ...restAddress } = data;
+
+    if (rememberAddress) {
+      await setUserAddress(restAddress, session!.user.id);
+    } else {
+      await deleteUserAddress(session!.user.id);
+    }
+
+    router.push('/checkout');
   };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -99,10 +133,9 @@ export const AddressForm = ({ countries }: Props) => {
           {...register('country', { required: true })}
         >
           <option value="">[ Seleccione ]</option>
-
-          {countries?.map(({ id, name }) => (
-            <option key={id} value={id}>
-              {name}
+          {countries.map((country) => (
+            <option key={country.name} value={country.id}>
+              {country.name}
             </option>
           ))}
         </select>
@@ -118,7 +151,7 @@ export const AddressForm = ({ countries }: Props) => {
       </div>
 
       <div className="mb-2 flex flex-col sm:mt-1">
-        <div className="mb-10 inline-flex items-center">
+        <div className="mb-10 inline-flex items-center ">
           <label
             className="relative flex cursor-pointer items-center rounded-full p-3"
             htmlFor="checkbox"
@@ -146,15 +179,18 @@ export const AddressForm = ({ countries }: Props) => {
               </svg>
             </div>
           </label>
-          <span>Recordar direccion?</span>
+
+          <span>¿Recordar dirección?</span>
         </div>
 
         <button
           disabled={!isValid}
+          // href="/checkout"
           type="submit"
-          className={clsx('flex w-full justify-center sm:w-1/2 ', {
+          // className="btn-primary flex w-full sm:w-1/2 justify-center "
+          className={clsx({
             'btn-primary': isValid,
-            'btn-disable': !isValid,
+            'btn-disabled': !isValid,
           })}
         >
           Siguiente

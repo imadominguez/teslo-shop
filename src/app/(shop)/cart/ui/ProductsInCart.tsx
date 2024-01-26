@@ -36,7 +36,10 @@ export const ProductsInCart = () => {
     <>
       {/* Iterar sobre los productos en el carrito */}
       {productsInCart.map((product) => (
-        <div key={`${product.slug}-${product.size}`} className="mb-5 flex">
+        <div
+          key={`${product.slug}-${product.size}${Math.random()}`}
+          className="mb-5 flex"
+        >
           {/* Imagen del producto */}
           <Image
             src={`/products/${product.image}`}
@@ -45,6 +48,7 @@ export const ProductsInCart = () => {
             height={100}
             style={{ width: '100px', height: '100px' }}
             className="mr-5 rounded"
+            priority
           />
 
           <div>
