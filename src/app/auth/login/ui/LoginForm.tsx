@@ -5,16 +5,15 @@ import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/actions';
 import { IoInformationCircleOutline } from 'react-icons/io5';
 import clsx from 'clsx';
-import { useRouter } from 'next/navigation';
+
 import { useEffect } from 'react';
 
 export default function LoginForm() {
-  const router = useRouter();
   const [state, dispatch] = useFormState(authenticate, undefined);
 
   useEffect(() => {
     if (state === 'Success') {
-      router.replace('/');
+      window.location.replace('/');
     }
   }, [state]);
 
@@ -71,20 +70,20 @@ export default function LoginForm() {
       </Link>
     </form>
   );
+}
 
-  function LoginButton() {
-    const { pending } = useFormStatus();
+function LoginButton() {
+  const { pending } = useFormStatus();
 
-    return (
-      <button
-        className={clsx('btn-primary', {
-          'btn-disable': pending,
-          'btn-primary': !pending,
-        })}
-        aria-disabled={pending}
-      >
-        Ingresar
-      </button>
-    );
-  }
+  return (
+    <button
+      className={clsx('btn-primary', {
+        'btn-disable': pending,
+        'btn-primary': !pending,
+      })}
+      aria-disabled={pending}
+    >
+      Ingresar
+    </button>
+  );
 }
