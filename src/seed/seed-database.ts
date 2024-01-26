@@ -9,7 +9,7 @@ async function main() {
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
   await prisma.user.deleteMany();
-
+  console.log('✅ Registros borrados');
   // Obtén los datos de prueba
   const { categories, products, users } = initialData;
 
@@ -23,7 +23,6 @@ async function main() {
 
   // Obtiene las categorías desde la base de datos
   const categoriesDB = await prisma.category.findMany();
-
   // Crea un mapa para asignar nombres de categorías a identificadores de base de datos
   const categoriesMap = categoriesDB.reduce(
     (map, category) => {
@@ -54,14 +53,15 @@ async function main() {
       data: imagesData,
     });
   });
-
+  console.log('✅ Productos creados');
   users.forEach(async (user) => {
     await prisma.user.create({
       data: user,
     });
   });
-
-  console.log('Seed ejecutado con éxito');
+  console.log('✅ Usuarios creados');
+  console.log(' ');
+  console.log('✅ Seed ejecutado con éxito');
 }
 
 // Ejecuta la función main solo si no estamos en un entorno de producción
