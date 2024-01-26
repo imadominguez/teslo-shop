@@ -40,6 +40,11 @@ Table User {
   image String
 }
 
+Table Country {
+  id String [pk]
+  name String [not null]
+}
+
 Enum Size {
   XS
   S

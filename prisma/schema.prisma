@@ -74,6 +74,11 @@ model User {
   image        String?
 }
 
+model Country {
+  id   String @id
+  name String
+}
+
 generator dbml {
   provider = "prisma-dbml-generator"
 }
