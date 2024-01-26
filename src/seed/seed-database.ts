@@ -9,9 +9,10 @@ async function main() {
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
   await prisma.user.deleteMany();
+  await prisma.country.deleteMany();
   console.log('✅ Registros borrados');
   // Obtén los datos de prueba
-  const { categories, products, users } = initialData;
+  const { categories, products, users, countries } = initialData;
 
   // Crea registros de categorías
   const categoriesData = categories.map((category) => ({
@@ -60,6 +61,14 @@ async function main() {
     });
   });
   console.log('✅ Usuarios creados');
+
+  countries.forEach(async (country) => {
+    await prisma.country.create({
+      data: country,
+    });
+  });
+  console.log('✅ Countries creados');
+
   console.log(' ');
   console.log('✅ Seed ejecutado con éxito');
 }

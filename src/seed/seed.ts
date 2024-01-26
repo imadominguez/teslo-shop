@@ -1,4 +1,5 @@
 import bcryptjs from 'bcryptjs';
+import { SeedCountry, countries } from './seed-countries';
 interface SeedProduct {
   description: string; // Descripción del producto
   images: string[]; // Imágenes asociadas al producto
@@ -26,6 +27,7 @@ interface SeedData {
   categories: string[]; // Lista de nombres de categorías
   products: SeedProduct[]; // Lista de productos a sembrar en la base de datos
   users: SeedUser[];
+  countries: SeedCountry[];
 }
 
 export const initialData: SeedData = {
@@ -726,4 +728,6 @@ export const initialData: SeedData = {
       name: 'User Admin',
     },
   ],
+
+  countries: countries,
 };
