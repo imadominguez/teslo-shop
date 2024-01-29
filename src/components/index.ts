@@ -12,3 +12,4 @@ export { ProductMobileSlideshow } from './product/slideshow/ProductMobileSlidesh
 export { Footer } from './ui/footer/Footer';
 export { Pagination } from './ui/pagination/Pagination';
 export { Provider } from './provider/Provider';
+export { ProductItemSkeleton } from './skeleton/ProductItemSkeleton';
