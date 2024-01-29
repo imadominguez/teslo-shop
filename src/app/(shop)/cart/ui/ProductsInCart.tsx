@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useCartStore } from '@/store';
 import { QuantitySelector } from '@/components';
-import { ProductItemSkeleton } from './ProductItemSkeleton';
+import { ProductItemSkeleton } from '@/components';
 
 // Componente para mostrar los productos en el carrito
 export const ProductsInCart = () => {
