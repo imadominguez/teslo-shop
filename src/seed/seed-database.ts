@@ -5,6 +5,10 @@ import { initialData } from './seed';
 // Función principal para sembrar la base de datos
 async function main() {
   // Borrar registros existentes en orden inverso para evitar problemas de restricciones de clave externa
+
+  await prisma.orderAddress.deleteMany();
+  await prisma.orderItem.deleteMany();
+  await prisma.order.deleteMany();
   await prisma.userAddress.deleteMany();
   await prisma.productImage.deleteMany();
   await prisma.product.deleteMany();
