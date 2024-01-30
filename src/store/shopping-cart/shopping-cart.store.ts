@@ -18,6 +18,7 @@ interface State {
   addProductToCart: (product: CartProduct) => void; // Agrega un producto al carrito
   updateProductQuantity: (product: CartProduct, quantity: number) => void; // Actualiza la cantidad de un producto en el carrito
   removeProductFromCart: (product: CartProduct) => void; // Elimina un producto del carrito
+  clearCart: () => void; // Limpia el carrito de compras
 }
 
 const storeApiCart: StateCreator<State> = (set, get) => ({
@@ -84,6 +85,10 @@ const storeApiCart: StateCreator<State> = (set, get) => ({
       (prod) => prod.id !== product.id || prod.size !== product.size,
     );
     set({ cart: updatedCartProducts });
+  },
+  // ---------------------------------------------------
+  clearCart: () => {
+    set({ cart: [] });
   },
 });
 
