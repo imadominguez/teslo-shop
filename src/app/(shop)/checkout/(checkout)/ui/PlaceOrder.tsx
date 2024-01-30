@@ -4,13 +4,16 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { useAddressStore, useCartStore } from '@/store';
 import { currencyFormat } from '@/utils';
+import { placeOrder } from '@/actions';
+import { useRouter } from 'next/navigation';
 
 export const PlaceOrder = () => {
+  const router = useRouter();
   const [loaded, setLoaded] = useState(false);
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
-
+  const [errorMessage, setErrorMessage] = useState('');
   const address = useAddressStore((state) => state.address);
-
+  const clearCart = useCartStore((state) => state.clearCart);
   // Obteniendo información del carrito desde el store
   const { itemsInCart, subTotal, tax, total } = useCartStore((state) =>
     state.getSummaryInformation(),
@@ -33,14 +36,27 @@ export const PlaceOrder = () => {
       };
     });
 
-    // console.log({ address, productsToOrder });
+    //! Server Action
+    const res = await placeOrder(productsToOrder, address);
 
-    // TODO: Server Action
+    if (!res.ok) {
+      setIsPlacingOrder(false);
+      setErrorMessage(res.message);
+      return;
+    }
+
+    //* Todo salio bien
     setIsPlacingOrder(false);
+
+    // Limpiamos el carrito y redireccionamos al usuario
+    clearCart();
+    router.replace('/orders/' + res.order?.id);
   };
+
   if (loaded === false) {
     return <span className="text-3xl font-bold">Cargando...</span>;
   }
+
   return (
     <div className="flex flex-col justify-between rounded-xl bg-white p-7 shadow-xl">
       <h2 className="mb-2 text-2xl">Direccion de entrega</h2>
@@ -95,7 +111,7 @@ export const PlaceOrder = () => {
             </a>
           </span>
         </p>
-
+        <p className=" text-red-500">{errorMessage}</p>
         <button
           // href={'/orders/123'}
           onClick={onPlaceOrder}

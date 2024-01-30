@@ -1,9 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
-import { QuantitySelector, Title } from "@/components";
-import { initialData } from "@/seed/seed";
-import clsx from "clsx";
-import { IoCartOutline } from "react-icons/io5";
+import Link from 'next/link';
+import Image from 'next/image';
+import { QuantitySelector, Title } from '@/components';
+import { initialData } from '@/seed/seed';
+import clsx from 'clsx';
+import { IoCartOutline } from 'react-icons/io5';
 
 const productsInCart = [
   initialData.products[0],
@@ -23,6 +23,7 @@ export default function OrderPage({ params }: Props) {
 
   // TODO: verificar que el id corresponde al usuario logueado
   // redirect('/')
+
   return (
     <div className="mb-72 flex items-center justify-center px-10 sm:px-0">
       <div className="flex w-[1000px] flex-col ">
@@ -31,10 +32,10 @@ export default function OrderPage({ params }: Props) {
           <div className="mt-5 flex flex-col ">
             <div
               className={clsx(
-                "mb-5 flex items-center rounded-lg px-3.5 py-2 text-xs font-bold text-white",
+                'mb-5 flex items-center rounded-lg px-3.5 py-2 text-xs font-bold text-white',
                 {
-                  "bg-red-500": true,
-                  "bg-green-500": false,
+                  'bg-red-500': true,
+                  'bg-green-500': false,
                 },
               )}
             >
@@ -51,7 +52,7 @@ export default function OrderPage({ params }: Props) {
                   alt={product.title}
                   width={100}
                   height={100}
-                  style={{ width: "100px", height: "100px" }}
+                  style={{ width: '100px', height: '100px' }}
                   className="mr-5 rounded"
                 />
 
@@ -86,7 +87,7 @@ export default function OrderPage({ params }: Props) {
               <span className="text-right">3 articulos</span>
               <span>Subtotal</span>
               <span className="text-right">$ 100.00</span>
-              <span>Impuestos{"15%"}</span>
+              <span>Impuestos{'15%'}</span>
               <span className="text-right">$ 100.00</span>
               <span className="mt-5 text-2xl">Total: </span>
               <span className="mt-5 text-right text-xl">$ 100.00</span>
@@ -95,10 +96,10 @@ export default function OrderPage({ params }: Props) {
             <div className="mb-2 mt-5 w-full">
               <div
                 className={clsx(
-                  "mb-5 flex items-center rounded-lg px-3.5 py-2 text-xs font-bold text-white",
+                  'mb-5 flex items-center rounded-lg px-3.5 py-2 text-xs font-bold text-white',
                   {
-                    "bg-red-500": true,
-                    "bg-green-500": false,
+                    'bg-red-500': true,
+                    'bg-green-500': false,
                   },
                 )}
               >
