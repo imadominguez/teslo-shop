@@ -21,9 +21,9 @@ export const ProductsInCart = () => {
   }
 
   // Si no hay productos en el carrito, redirigir a la página vacía
-  if (productsInCart.length === 0) {
-    redirect('/empty');
-  }
+  // if (productsInCart.length === 0) {
+  //   redirect('/empty');
+  // }
 
   return (
     <>
