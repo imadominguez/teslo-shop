@@ -79,6 +79,7 @@ Table Order {
   userId String [not null]
   OrderItem OrderItem [not null]
   OrderAddress OrderAddress
+  transactionId String
 }
 
 Table OrderItem {
