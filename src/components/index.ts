@@ -11,5 +11,7 @@ export { ProductSlideshow } from './product/slideshow/ProductSlideshow';
 export { ProductMobileSlideshow } from './product/slideshow/ProductMobileSlideshow';
 export { Footer } from './ui/footer/Footer';
 export { Pagination } from './ui/pagination/Pagination';
-export { Provider } from './provider/Provider';
+export { Providers } from './providers/Providers';
 export { ProductItemSkeleton } from './skeleton/ProductItemSkeleton';
+export { PaypalButton } from './paypal/PaypalButton';
+export { OrderStatus } from './orders/OrderStatus';

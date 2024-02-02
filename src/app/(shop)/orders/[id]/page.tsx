@@ -1,18 +1,9 @@
 import Image from 'next/image';
-import clsx from 'clsx';
-import { getOrderById } from '@/actions';
-import { initialData } from '@/seed/seed';
-import { Title } from '@/components';
-import { IoCartOutline } from 'react-icons/io5';
 import { redirect } from 'next/navigation';
-import { currencyFormat } from '../../../../utils/currencyFormat';
 
-const productsInCart = [
-  initialData.products[0],
-  initialData.products[1],
-  initialData.products[2],
-  initialData.products[3],
-];
+import { getOrderById } from '@/actions';
+import { currencyFormat } from '@/utils';
+import { OrderStatus, PaypalButton, Title } from '@/components';
 
 interface Props {
   params: {
@@ -22,7 +13,6 @@ interface Props {
 
 export default async function OrderPage({ params }: Props) {
   const { id } = params;
-  // TODO: Llamar el server action
   const { ok, order } = await getOrderById(id);
 
   if (!ok) {
@@ -31,25 +21,13 @@ export default async function OrderPage({ params }: Props) {
 
   const address = order!.OrderAddress;
   const isPaid = order!.isPaid;
-  const isPaidText = isPaid ? 'Compra efectuada' : 'Pendiente de pago';
   return (
     <div className="mb-72 flex items-center justify-center px-10 sm:px-0">
       <div className="flex w-[1000px] flex-col ">
         <Title title={`Orden #${id.split('-').at(-1)}`} />
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 ">
           <div className="mt-5 flex flex-col ">
-            <div
-              className={clsx(
-                'mb-5 flex items-center rounded-lg px-3.5 py-2 text-xs font-bold text-white',
-                {
-                  'bg-red-500': !isPaid,
-                  'bg-green-500': isPaid,
-                },
-              )}
-            >
-              <IoCartOutline size={30} />
-              <span className="mx-2">{isPaidText}</span>
-            </div>
+            <OrderStatus isPaid={isPaid} />
 
             {/* items del carrito */}
             {order!.OrderItem.map((item) => (
@@ -125,18 +103,11 @@ export default async function OrderPage({ params }: Props) {
             </div>
 
             <div className="mb-2 mt-5 w-full">
-              <div
-                className={clsx(
-                  'mb-5 flex items-center rounded-lg px-3.5 py-2 text-xs font-bold text-white',
-                  {
-                    'bg-red-500': !isPaid,
-                    'bg-green-500': isPaid,
-                  },
-                )}
-              >
-                <IoCartOutline size={30} />
-                <span className="mx-2">{isPaidText}</span>
-              </div>
+              {isPaid ? (
+                <OrderStatus isPaid={isPaid} />
+              ) : (
+                <PaypalButton orderId={order!.id} amount={order!.total} />
+              )}
             </div>
           </div>
         </div>
