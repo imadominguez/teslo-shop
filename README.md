@@ -19,7 +19,7 @@ Sigue estos pasos para configurar el proyecto en tu entorno de desarrollo:
 
 3. Instala las dependencias `npm install`
 
-4. Levanta la base de datos: `docker compose up -d`
+4. Abre Docker Desktop y levanta la base de datos con: `docker compose up -d`
 
 5. Ejecuta las migraciones de Prisma: `npx prisma migrate dev`
 
