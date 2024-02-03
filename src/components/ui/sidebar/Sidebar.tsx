@@ -131,7 +131,7 @@ export const Sidebar = () => {
               <span className="ml-3 text-xl">Productos</span>
             </Link>
             <Link
-              href={'/'}
+              href={'/admin/orders'}
               onClick={() => closeSideMenu()}
               className="mt-10 flex items-center rounded p-2 transition-all hover:bg-gray-100"
             >
