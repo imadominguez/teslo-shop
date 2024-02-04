@@ -3,11 +3,11 @@ export const revalidate = 0;
 import Link from 'next/link';
 import { Title } from '@/components';
 import { IoCardOutline } from 'react-icons/io5';
-import { getPagiinatedOrders } from '@/actions';
+import { getPaginatedOrders } from '@/actions';
 import { redirect } from 'next/navigation';
 
 export default async function OrdersPageAdmin() {
-  const { ok, orders = [] } = await getPagiinatedOrders();
+  const { ok, orders = [] } = await getPaginatedOrders();
 
   if (!ok) {
     redirect('/auth/login');
