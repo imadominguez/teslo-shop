@@ -2,7 +2,7 @@
 
 import { auth } from '@/auth.config';
 import prisma from '@/lib/prisma';
-export const getPagiinatedOrders = async () => {
+export const getPaginatedOrders = async () => {
   try {
     const session = await auth();
     if (session?.user.role !== 'admin') {
