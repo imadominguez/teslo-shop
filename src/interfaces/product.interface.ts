@@ -12,6 +12,10 @@ export interface Product {
   gender: Category; // Género al que está destinado el producto
 }
 
+export interface ProductImage {
+  id: string;
+  url: string;
+}
 export interface CartProduct {
   id: string; // Identificador único del producto en el carrito
   slug: string; // Slug único del producto
@@ -22,6 +26,6 @@ export interface CartProduct {
   image: string; // Ruta de la imagen del producto en el carrito
 }
 
-export type Category = 'men' | 'women' | 'kid' | 'unisex'; // Categoría del producto
+type Category = 'men' | 'women' | 'kid' | 'unisex'; // Categoría del producto
 export type Size = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL'; // Talla del producto
 export type Type = 'shirts' | 'pants' | 'hoodies' | 'hats'; // Tipo de producto
