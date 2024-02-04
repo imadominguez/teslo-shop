@@ -1,8 +1,6 @@
 export const revalidate = 0;
 
-import Link from 'next/link';
 import { Title } from '@/components';
-import { IoCardOutline } from 'react-icons/io5';
 import { getPaginatedUsers } from '@/actions';
 import { redirect } from 'next/navigation';
 import { UsersTable } from './ui/UsersTable';
