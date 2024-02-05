@@ -16,15 +16,15 @@ export const StockLabel = ({ slug }: Props) => {
 
   // Efecto para obtener el stock cuando el componente se monta
   useEffect(() => {
-    getStock();
-  }, []);
+    // Función asincrónica para obtener el stock por el slug
+    const getStock = async () => {
+      const inStock = await getStockBySlug(slug);
+      setStock(inStock);
+      setLoading(false);
+    };
 
-  // Función asincrónica para obtener el stock por el slug
-  const getStock = async () => {
-    const inStock = await getStockBySlug(slug);
-    setStock(inStock);
-    setLoading(false);
-  };
+    getStock();
+  }, [slug]);
 
   return (
     // Renderización condicional según si se ha cargado el stock o no

@@ -9,7 +9,7 @@ export interface Product {
   tags: string[]; // Etiquetas asociadas al producto
   title: string; // Título del producto
   // TODO: type: Type;        // Tipo de producto (pendiente de implementar)
-  gender: Category; // Género al que está destinado el producto
+  gender: CategoryProducts; // Género al que está destinado el producto
 }
 
 export interface ProductImage {
@@ -26,6 +26,6 @@ export interface CartProduct {
   image: string; // Ruta de la imagen del producto en el carrito
 }
 
-type Category = 'men' | 'women' | 'kid' | 'unisex'; // Categoría del producto
+export type CategoryProducts = 'men' | 'women' | 'kid' | 'unisex'; // Categoría del producto
 export type Size = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'XXL' | 'XXXL'; // Talla del producto
 export type Type = 'shirts' | 'pants' | 'hoodies' | 'hats'; // Tipo de producto
