@@ -1,8 +1,11 @@
 'use server';
-
 import prisma from '@/lib/prisma';
 import { Gender, Product, Size } from '@prisma/client';
+import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
+import { v2 as cloudinary } from 'cloudinary';
+
+cloudinary.config(process.env.CLOUDINARY_URL ?? '');
 
 const productSchema = z.object({
   id: z.string().uuid().optional().nullable(),
@@ -39,45 +42,99 @@ export const createUpdateProduct = async (formData: FormData) => {
 
   const { id, ...rest } = product;
 
-  const prismaTx = await prisma.$transaction(async (tx) => {
-    let product: Product;
-    const tagsArray = rest.tags
-      .split(',')
-      .map((tag) => tag.trim().toLowerCase());
+  try {
+    const prismaTx = await prisma.$transaction(async (tx) => {
+      let product: Product;
+      const tagsArray = rest.tags
+        .split(',')
+        .map((tag) => tag.trim().toLowerCase());
 
-    if (id) {
-      // Actualizar producto
-      product = await prisma.product.update({
-        where: { id: id },
-        data: {
-          ...rest,
-          sizes: {
-            set: rest.sizes as Size[],
+      if (id) {
+        // Actualizar producto
+        product = await prisma.product.update({
+          where: { id: id },
+          data: {
+            ...rest,
+            sizes: {
+              set: rest.sizes as Size[],
+            },
+            tags: {
+              set: tagsArray,
+            },
           },
-          tags: {
-            set: tagsArray,
+        });
+      } else {
+        // Crear
+        product = await prisma.product.create({
+          data: {
+            ...rest,
+            sizes: rest.sizes as Size[],
+            tags: tagsArray,
           },
-        },
-      });
-    } else {
-      // Crear
-      product = await prisma.product.create({
-        data: {
-          ...rest,
-          sizes: rest.sizes as Size[],
-          tags: tagsArray,
-        },
-      });
-    }
-    console.log({ updatedProduct: product });
+        });
+      }
+
+      // Proceso de carga y guardado de imagenes
+      // Recorrer las imagenes y guardarlas en la base de datos
+      if (formData.getAll('images')) {
+        const images = formData.getAll('images') as File[];
+
+        // ['http://url.jpg', 'http://url.jpg']
+        const imagesUploaded = await uploadImages(images);
+        if (!imagesUploaded) {
+          throw new Error('Error al subir las imagenes');
+        }
+
+        await prisma.productImage.createMany({
+          data: imagesUploaded.map((image) => ({
+            url: image!,
+            productId: product.id,
+          })),
+        });
+      }
+
+      return {
+        product,
+      };
+    });
+
+    revalidatePath('/admin/products');
+    revalidatePath(`/admin/product/${product.slug}`);
+    revalidatePath(`/products/${product.slug}`);
 
     return {
-      product,
+      ok: true,
+      product: prismaTx.product,
     };
-  });
-
-  // TODO: RevalidatePath
-  return {
-    ok: true,
-  };
+  } catch (error) {
+    return {
+      ok: false,
+      message: 'Error al crear/actualizar el producto',
+    };
+  }
 };
+
+async function uploadImages(images: File[]) {
+  try {
+    const uploadPromises = images.map(async (image) => {
+      try {
+        const buffer = await image.arrayBuffer();
+        const base64Image = Buffer.from(buffer).toString('base64');
+        return cloudinary.uploader
+          .upload(`data:image/png;base64,${base64Image}`, {
+            folder: 'teslo-shop',
+          })
+          .then((res) => res.secure_url);
+      } catch (error) {
+        console.log(error);
+        return null;
+      }
+    });
+
+    const uploadedImages = await Promise.all(uploadPromises);
+    return uploadedImages;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
