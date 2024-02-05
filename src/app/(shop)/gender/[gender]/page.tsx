@@ -1,17 +1,14 @@
 export const revalidate = 60;
 
+import { redirect } from 'next/navigation';
+import { Gender } from '@prisma/client';
+import { CategoryProducts } from '@/interfaces';
 import { getPaginatedProductsWidthImages } from '@/actions';
 import { Pagination, ProductGrid, Title } from '@/components';
-import { Category } from '@/interfaces';
-import { initialData } from '@/seed/seed';
-import { Gender } from '@prisma/client';
-import { notFound, redirect, useSearchParams } from 'next/navigation';
-
-const seedProducts = initialData.products;
 
 interface Props {
   params: {
-    gender: Category;
+    gender: CategoryProducts;
   };
   searchParams: {
     page?: string;
@@ -23,16 +20,24 @@ export default async function CategoryPage({
   searchParams: { page },
 }: Props) {
   const { gender } = params;
-  if (!gender) {
-    notFound();
+
+  const { products, totalPages } = await getPaginatedProductsWidthImages({
+    page: page ? +page : 1,
+    gender: gender as Gender,
+  });
+
+  if (products.length === 0) {
+    redirect(`/gender/${gender}`);
   }
-  const labels: Record<Category, string> = {
+
+  const labels: Record<string, string> = {
     men: 'para hombres',
     women: 'para mujeres',
     kid: 'para niños',
     unisex: 'para unisex',
   };
-  const subtitleLabel: Record<Category, string> = {
+
+  const subtitleLabel: Record<string, string> = {
     men: 'Productos para él',
     women: 'Productos para ella',
     kid: 'Productos para los niños',
@@ -41,14 +46,6 @@ export default async function CategoryPage({
   // if (!Object.keys(labels).includes(gender)) {
   //   notFound();
   // }
-  const { products, totalPages } = await getPaginatedProductsWidthImages({
-    gender,
-    page: page ? +page : 1,
-  });
-
-  if (products.length === 0) {
-    redirect(`/gender/${gender}`);
-  }
 
   return (
     <>
