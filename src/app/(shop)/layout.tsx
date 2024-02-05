@@ -1,4 +1,5 @@
 import { Footer, Sidebar, TopMenu } from '@/components';
+import { Toaster } from 'sonner';
 
 export default function ShopLayout({
   children,
@@ -13,6 +14,7 @@ export default function ShopLayout({
         {children}
       </div>
       <Footer />
+      <Toaster richColors />
     </main>
   );
 }

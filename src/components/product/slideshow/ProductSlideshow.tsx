@@ -12,6 +12,7 @@ import 'swiper/css/thumbs';
 import './slideshow.css'; // Estilos personalizados
 import { Autoplay, FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import Image from 'next/image';
+import { ProductImage } from '../product-image/ProductImage';
 
 // Propiedades esperadas para el componente ProductSlideshow
 interface Props {
@@ -50,8 +51,8 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         {images.map((image) => (
           <SwiperSlide key={image}>
             {/* Imagen de cada slide con atributos y clases */}
-            <Image
-              src={`/products/${image}`}
+            <ProductImage
+              src={image}
               width={1024}
               height={800}
               alt={title}
@@ -75,8 +76,8 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         {images.map((image) => (
           <SwiperSlide key={image}>
             {/* Miniatura de cada imagen con atributos y clases */}
-            <Image
-              src={`/products/${image}`}
+            <ProductImage
+              src={image}
               width={1024}
               height={800}
               alt={title}

@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCartStore } from '@/store';
-import { QuantitySelector } from '@/components';
+import { ProductImage, QuantitySelector } from '@/components';
 import { ProductItemSkeleton } from '@/components';
 
 // Componente para mostrar los productos en el carrito
@@ -41,14 +41,14 @@ export const ProductsInCart = () => {
           className="mb-5 flex"
         >
           {/* Imagen del producto */}
-          <Image
-            src={`/products/${product.image}`}
+          <ProductImage
+            src={product.image}
             alt={product.title}
             width={100}
             height={100}
             style={{ width: '100px', height: '100px' }}
             className="mr-5 rounded"
-            priority
+            priority={true}
           />
 
           <div>
