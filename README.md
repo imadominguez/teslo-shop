@@ -27,6 +27,20 @@ Sigue estos pasos para configurar el proyecto en tu entorno de desarrollo:
 
 7. Inicia el proyecto en modo desarrollo: `npm run dev`
 
+8. Limpiar localStorage, sessionStorage y Cookies del navegador
+
+## Cuentas registradas en el seed
+
+### Cuenta de administrador
+
+- usuario: user-admin@gmail.com
+- constraseña: 123456
+
+### Cuenta de cliente
+
+- usuario: user-user@gmail.com
+- constraseña: 123456
+
 ## Cómo correr en producción
 
 - Se proporcionarán instrucciones detalladas una vez que el entorno de producción esté configurado y listo para desplegar.
