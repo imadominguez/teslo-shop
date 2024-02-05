@@ -1,12 +1,9 @@
 export const revalidate = 0;
 
 import Link from 'next/link';
-import { Pagination, Title } from '@/components';
-import { IoCardOutline } from 'react-icons/io5';
-import { getPaginatedOrders, getPaginatedProductsWidthImages } from '@/actions';
-import { redirect } from 'next/navigation';
-import Image from 'next/image';
 import { currencyFormat } from '@/utils';
+import { getPaginatedProductsWidthImages } from '@/actions';
+import { Pagination, ProductImage, Title } from '@/components';
 
 interface Props {
   searchParams: {
@@ -24,7 +21,7 @@ export default async function OrdersPageAdmin({ searchParams }: Props) {
       <Title title="Matenimiento de productos" />
 
       <div className="mb-5 flex justify-end">
-        <Link href={'/admiin/product/new'} className="btn-primary">
+        <Link href={'/admin/product/new'} className="btn-primary">
           Nuevo producto
         </Link>
       </div>
@@ -79,8 +76,8 @@ export default async function OrdersPageAdmin({ searchParams }: Props) {
               >
                 <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
                   <Link href={`/product/${product.slug}`}>
-                    <Image
-                      src={`/products/${product.ProductImage[0].url}`}
+                    <ProductImage
+                      src={product.ProductImage[0]?.url}
                       alt={product.title}
                       width={80}
                       height={80}
