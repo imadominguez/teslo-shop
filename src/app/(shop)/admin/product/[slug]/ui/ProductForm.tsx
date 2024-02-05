@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { Form, useForm } from 'react-hook-form';
 
 interface Props {
-  product: Product & { ProductImage?: ProductImage[] };
+  product: Partial<Product> & { ProductImage?: ProductImage[] };
   categories: Category[];
 }
 
@@ -39,7 +39,7 @@ export const ProductForm = ({ product, categories }: Props) => {
   } = useForm<FormInputs>({
     defaultValues: {
       ...product,
-      tags: product.tags.join(', '),
+      tags: product.tags?.join(', '),
       sizes: product.sizes ?? [],
 
       // TODO: images
@@ -58,7 +58,9 @@ export const ProductForm = ({ product, categories }: Props) => {
     const formData = new FormData();
     const { ...productToSave } = data;
 
-    formData.append('id', product.id ?? '');
+    if (product.id) {
+      formData.append('id', product.id ?? '');
+    }
     formData.append('title', productToSave.title);
     formData.append('slug', productToSave.slug);
     formData.append('description', productToSave.description);
@@ -160,6 +162,15 @@ export const ProductForm = ({ product, categories }: Props) => {
 
       {/* Selector de tallas y fotos */}
       <div className="w-full">
+        <div className="mb-2 flex flex-col">
+          <span>Inventario</span>
+          <input
+            type="number"
+            className="rounded-md border bg-gray-200 p-2"
+            {...register('inStock', { required: true, min: 0 })}
+          />
+        </div>
+
         {/* As checkboxes */}
         <div className="flex flex-col">
           <span>Tallas</span>
