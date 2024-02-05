@@ -59,13 +59,21 @@ export const createUpdateProduct = async (formData: FormData) => {
           },
         },
       });
-
-      console.log({ updatedProduct: product });
     } else {
       // Crear
+      product = await prisma.product.create({
+        data: {
+          ...rest,
+          sizes: rest.sizes as Size[],
+          tags: tagsArray,
+        },
+      });
     }
+    console.log({ updatedProduct: product });
 
-    return {};
+    return {
+      product,
+    };
   });
 
   // TODO: RevalidatePath
