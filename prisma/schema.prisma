@@ -151,7 +151,3 @@ model OrderAddress {
   Order      Order   @relation(fields: [orderId], references: [id])
   orderId    String  @unique
 }
-
-generator dbml {
-  provider = "prisma-dbml-generator"
-}
