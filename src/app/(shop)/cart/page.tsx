@@ -1,13 +1,21 @@
 import Link from 'next/link';
 import { Title } from '@/components';
-import { redirect } from 'next/navigation';
 import { ProductsInCart } from './ui/ProductsInCart';
 import { OrderSummary } from './ui/OrderSummary';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s - Teslo | SHOP',
+    default: 'Carrito de compra',
+  },
+  description:
+    'Explora nuestro carrito de compra en Teslo SHOP y agrega más artículos a tu selección. Continúa comprando con facilidad mientras revisas tus productos. ¡Simplifica tu experiencia de compra en línea hoy mismo!',
+  keywords:
+    'Teslo, shop, administrador, ordenes, carrito de compra, compras en línea',
+};
 
 export default function CartPage() {
-  // TODO: Redireccionar si el carrito esta vacio
-  //  redirect('/empty');
-
   return (
     <div className="mb-44 flex items-center justify-center px-10 sm:px-0">
       <div className="flex w-[1000px] flex-col ">
