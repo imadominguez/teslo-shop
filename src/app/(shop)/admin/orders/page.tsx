@@ -12,8 +12,10 @@ export const metadata: Metadata = {
     template: '%s - Teslo | SHOP',
     default: 'Todas las ordenes',
   },
-  description: 'Pagina del administrador donde visualiza todas las ordenes',
-  keywords: 'Teslo, shop, administrador, ordenes',
+  description:
+    'Explora la página del administrador en Teslo SHOP y visualiza todas las órdenes pendientes y pagadas. Gestiona fácilmente el estado de las órdenes y accede a opciones detalladas para cada una.',
+  keywords:
+    'Teslo, shop, administrador, ordenes, órdenes pendientes, órdenes pagadas',
 };
 
 export default async function OrdersPageAdmin() {

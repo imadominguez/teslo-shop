@@ -11,8 +11,10 @@ export const metadata: Metadata = {
     template: '%s - Teslo | SHOP',
     default: 'Mantenimiento de usuarios',
   },
-  description: 'Todos los usuarios de Teslo SHOP',
-  keywords: 'Usuarios, Teslo, Shop, Administrador',
+  description:
+    'Explora la página de administración en Teslo SHOP y gestiona fácilmente todos los usuarios registrados en tu plataforma. Accede a información detallada de los usuarios y administra sus cuentas para ofrecer una experiencia de usuario óptima.',
+  keywords:
+    'Usuarios, Teslo, Shop, Administrador, gestión de usuarios, cuentas de usuario',
 };
 
 export default async function OrdersPageAdmin() {

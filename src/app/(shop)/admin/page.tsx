@@ -5,8 +5,9 @@ export const metadata: Metadata = {
     template: '%s - Teslo | SHOP',
     default: 'Admin',
   },
-  description: 'Pagina del administrador del sitio web',
-  keywords: 'admin, teslo, shop',
+  description:
+    'Explora la página del administrador en Teslo SHOP y gestiona fácilmente tu sitio web. Accede a herramientas y funciones de administración para controlar y mejorar tu plataforma en línea.',
+  keywords: 'admin, teslo, shop, administrador, gestión de sitio web',
 };
 
 export default function AdminPage() {

@@ -9,10 +9,12 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: {
     template: '%s - Teslo | SHOP',
-    default: 'Matenimiento de productos',
+    default: 'Mantenimiento de productos',
   },
-  description: 'Pagina de administración de productos',
-  keywords: 'Teslo, shop, administrador, productos',
+  description:
+    'Explora la página de administración en Teslo SHOP y gestiona fácilmente tu catálogo de productos. Agrega nuevos productos, actualiza existentes y mantén tu inventario organizado y actualizado para ofrecer la mejor experiencia de compra a tus clientes.',
+  keywords:
+    'Teslo, shop, administrador, productos, mantenimiento de productos, catálogo de productos, gestión de inventario',
 };
 
 interface Props {
