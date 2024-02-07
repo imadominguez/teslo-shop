@@ -3,6 +3,18 @@ import { AddressForm } from './ui/AddressForm';
 
 import { getCountries, getUserAddress } from '@/actions';
 import { auth } from '@/auth.config';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s - Teslo | SHOP',
+    default: 'Dirección - Teslo | SHOP',
+  },
+  description:
+    'Completa y actualiza tu dirección de entrega en Teslo SHOP. Asegúrate de que tus pedidos se entreguen correctamente al proporcionar una dirección de envío precisa y actualizada.',
+  keywords:
+    'Dirección, Teslo, SHOP, Dirección de Entrega, Formulario de Dirección',
+};
 
 export default async function AddressPage() {
   const countries = await getCountries();

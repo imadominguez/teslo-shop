@@ -3,6 +3,17 @@ import Image from 'next/image';
 import { Title } from '@/components';
 import { ProductsInCart } from './ui/ProductsInCart';
 import { PlaceOrder } from './ui/PlaceOrder';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s - Teslo | SHOP',
+    default: 'Verificar Orden - Teslo | SHOP',
+  },
+  description:
+    'Verifica y ajusta los elementos de tu orden en Teslo SHOP antes de confirmar tu compra. Edita los productos en tu carrito y revisa un resumen detallado antes de proceder al pago.',
+  keywords: 'Verificar Orden, Teslo, SHOP, Carrito, Confirmar Compra',
+};
 
 export default function CheckoutPage() {
   return (
