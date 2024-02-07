@@ -5,10 +5,7 @@ import { ProductForm } from './ui/ProductForm';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s - Teslo | SHOP',
-    default: 'Mantenimiento de producto',
-  },
+  title: 'Mantenimiento de producto',
   description:
     'Administra y mantiene tus productos en Teslo SHOP. Agrega nuevos productos o edita los existentes para mantener tu catálogo actualizado y atractivo para tus clientes.',
   keywords:

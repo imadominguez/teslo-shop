@@ -7,10 +7,7 @@ import { UsersTable } from './ui/UsersTable';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s - Teslo | SHOP',
-    default: 'Mantenimiento de usuarios',
-  },
+  title: 'Mantenimiento de usuarios',
   description:
     'Explora la página de administración en Teslo SHOP y gestiona fácilmente todos los usuarios registrados en tu plataforma. Accede a información detallada de los usuarios y administra sus cuentas para ofrecer una experiencia de usuario óptima.',
   keywords:

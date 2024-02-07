@@ -1,5 +1,13 @@
 import { auth } from '@/auth.config';
+import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Admin - Teslo | SHOP',
+    default: 'Admin',
+  },
+};
 
 export default async function AdminLayout({
   children,

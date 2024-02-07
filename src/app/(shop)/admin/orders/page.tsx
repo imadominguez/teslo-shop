@@ -8,10 +8,7 @@ import { redirect } from 'next/navigation';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s - Teslo | SHOP',
-    default: 'Todas las ordenes',
-  },
+  title: 'Todas las ordenes',
   description:
     'Explora la página del administrador en Teslo SHOP y visualiza todas las órdenes pendientes y pagadas. Gestiona fácilmente el estado de las órdenes y accede a opciones detalladas para cada una.',
   keywords:
