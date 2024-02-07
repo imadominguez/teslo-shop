@@ -1,16 +1,14 @@
 export const revalidate = 10080;
 
-import { getPaginatedProductsWidthImages, getProductBySlug } from '@/actions';
+import { Metadata, ResolvingMetadata } from 'next';
+import { font } from '@/config/fonts';
+import { notFound } from 'next/navigation';
+import { getAllProducts, getProductBySlug } from '@/actions';
 import {
   ProductMobileSlideshow,
   ProductSlideshow,
-  QuantitySelector,
-  SizeSelector,
   StockLabel,
 } from '@/components';
-import { font } from '@/config/fonts';
-import { Metadata, ResolvingMetadata } from 'next';
-import { notFound } from 'next/navigation';
 import { AddToCart } from './ui/AddToCart';
 
 interface Props {
@@ -34,20 +32,21 @@ export async function generateMetadata(
   return {
     title: product?.title ?? 'Producto no encontrado',
     description: product?.description ?? '',
-    // openGraph: {
-    //   title: product?.title ?? 'Producto no encontrado',
-    //   description: product?.description ?? '',
-    //   // images: [], // https://misitioweb.com/products/image.png
-    //   images: [`/products/${product?.images[1]}`],
-    // },
+    openGraph: {
+      title: product?.title ?? 'Producto no encontrado',
+      description: product?.description ?? '',
+      // images: [], // https://misitioweb.com/products/image.png
+      images: [`/products/${product?.images[1]}`],
+    },
   };
 }
-// export async function generateStaticParams() {
-//   const { products } = await getPaginatedProductsWidthImages();
-//   return products.map((product) => ({
-//     slug: product.slug,
-//   }));
-// }
+
+export async function generateStaticParams() {
+  const { products } = await getAllProducts();
+  return products.map((product) => ({
+    slug: product.slug,
+  }));
+}
 export default async function ProductPage({ params }: Props) {
   const { slug } = params;
   const product = await getProductBySlug(slug);
