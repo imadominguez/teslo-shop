@@ -37,7 +37,7 @@ export const getPaginatedProductsWidthImages = async ({
     },
   });
 
-  if (!products) {
+  if (!products.length) {
     throw new Error('no se pudo cargar');
   }
   // 2. Obtener la cantidad de paginas
