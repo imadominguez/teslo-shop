@@ -15,6 +15,14 @@ interface Props {
   };
 }
 
+export async function generateStaticParams() {
+  const genders = ['men', 'women', 'kid', 'unisex'];
+
+  return genders.map((gender) => ({
+    gender: gender,
+  }));
+}
+
 export default async function CategoryPage({
   params,
   searchParams: { page },
