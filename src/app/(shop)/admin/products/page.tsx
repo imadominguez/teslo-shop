@@ -4,6 +4,16 @@ import Link from 'next/link';
 import { currencyFormat } from '@/utils';
 import { getPaginatedProductsWidthImages } from '@/actions';
 import { Pagination, ProductImage, Title } from '@/components';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s - Teslo | SHOP',
+    default: 'Matenimiento de productos',
+  },
+  description: 'Pagina de administración de productos',
+  keywords: 'Teslo, shop, administrador, productos',
+};
 
 interface Props {
   searchParams: {

@@ -5,6 +5,16 @@ import { Title } from '@/components';
 import { IoCardOutline } from 'react-icons/io5';
 import { getPaginatedOrders } from '@/actions';
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s - Teslo | SHOP',
+    default: 'Todas las ordenes',
+  },
+  description: 'Pagina del administrador donde visualiza todas las ordenes',
+  keywords: 'Teslo, shop, administrador, ordenes',
+};
 
 export default async function OrdersPageAdmin() {
   const { ok, orders = [] } = await getPaginatedOrders();

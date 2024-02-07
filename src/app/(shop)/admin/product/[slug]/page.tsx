@@ -2,6 +2,16 @@ import { redirect } from 'next/navigation';
 import { getCategories, getProductBySlug } from '@/actions';
 import { Title } from '@/components';
 import { ProductForm } from './ui/ProductForm';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s - Teslo | SHOP',
+    default: 'Mantenimiento de producto',
+  },
+  description: 'Administración del producto',
+  keywords: 'Teslo, shop, administrador, productos',
+};
 
 interface Props {
   params: {
