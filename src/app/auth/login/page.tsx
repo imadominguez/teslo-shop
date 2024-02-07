@@ -1,6 +1,15 @@
 import { font } from '@/config/fonts';
 
 import LoginForm from './ui/LoginForm';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Iniciar sesión',
+  description:
+    'Inicia sesión en Teslo Shop para acceder a tu cuenta, realizar compras y administrar tus pedidos y detalles de perfil.',
+  keywords:
+    'teslo shop, iniciar sesión, cuenta de usuario, compras en línea, seguridad',
+};
 
 export default function LoginPage() {
   return (

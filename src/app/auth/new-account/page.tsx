@@ -1,5 +1,14 @@
 import { font } from '@/config/fonts';
 import { RegisterForm } from './ui/RegisterForm';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Crear nueva cuenta',
+  description:
+    'Crea una nueva cuenta en Teslo Shop para acceder a ofertas exclusivas, realizar compras más rápidas y gestionar tu perfil de usuario.',
+  keywords:
+    'teslo shop, crear cuenta, registrarse, compras en línea, perfil de usuario',
+};
 
 export default function NewAccountPage() {
   return (
