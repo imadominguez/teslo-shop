@@ -3,10 +3,7 @@ import { IoCartOutline } from 'react-icons/io5';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s - Teslo | SHOP',
-    default: 'Carrito Vacío - Teslo | SHOP',
-  },
+  title: 'Carrito Vacío - Teslo | SHOP',
   description:
     'Tu carrito en Teslo SHOP está vacío. ¡Explora nuestra amplia selección de productos y comienza a agregar artículos emocionantes a tu carrito de compras hoy mismo!',
   keywords: 'Carrito Vacío, Teslo, SHOP, Compras en línea, Explorar Productos',

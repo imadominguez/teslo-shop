@@ -1,6 +1,13 @@
 import { auth } from '@/auth.config';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
+
+export const metadata: Metadata = {
+  title: 'Perfil de Usuario',
+  description: 'Información del perfil de usuario en nuestro sitio web.',
+  keywords: 'perfil, usuario, información, cuenta, datos personales',
+};
 
 export default async function ProfilePage() {
   const session = await auth();

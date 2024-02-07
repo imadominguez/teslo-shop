@@ -1,10 +1,11 @@
 export const revalidate = 60;
 
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Gender } from '@prisma/client';
 import { CategoryProducts } from '@/interfaces';
 import { getPaginatedProductsWidthImages } from '@/actions';
 import { Pagination, ProductGrid, Title } from '@/components';
+import { Metadata } from 'next';
 
 interface Props {
   params: {
@@ -12,6 +13,23 @@ interface Props {
   };
   searchParams: {
     page?: string;
+  };
+}
+
+export function generateMetadata({ params }: Props): Metadata {
+  const labels: Record<string, string> = {
+    men: 'para hombres',
+    women: 'para mujeres',
+    kid: 'para niños',
+    unisex: 'para unisex',
+  };
+
+  const genderLabel = labels[params.gender];
+
+  return {
+    title: `Artículos ${genderLabel} - Teslo | SHOP`,
+    description: `Explora nuestra amplia selección de artículos ${genderLabel} en Teslo SHOP. Encuentra los mejores productos ${genderLabel} para ti.`,
+    keywords: `Artículos ${genderLabel}, ${params.gender}, moda ${params.gender}, ropa ${params.gender}, accesorios ${params.gender}, ${genderLabel} Teslo SHOP`,
   };
 }
 
@@ -51,17 +69,15 @@ export default async function CategoryPage({
     kid: 'Productos para los niños',
     unisex: 'Todos los productos para todes xD',
   };
-  // if (!Object.keys(labels).includes(gender)) {
-  //   notFound();
-  // }
+  if (!Object.keys(labels).includes(gender)) {
+    notFound();
+  }
+  const title = `Artículos ${labels[gender]}`;
+  const subtitle = subtitleLabel[gender];
 
   return (
     <>
-      <Title
-        title={`Articulos ${labels[gender]}`}
-        subtitle={subtitleLabel[gender]}
-        className="mb-2"
-      />
+      <Title title={title} subtitle={subtitle} className="mb-2" />
 
       <ProductGrid products={products} />
 

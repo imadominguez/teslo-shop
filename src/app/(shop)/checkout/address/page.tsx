@@ -6,10 +6,7 @@ import { auth } from '@/auth.config';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s - Teslo | SHOP',
-    default: 'Dirección - Teslo | SHOP',
-  },
+  title: 'Dirección - Teslo | SHOP',
   description:
     'Completa y actualiza tu dirección de entrega en Teslo SHOP. Asegúrate de que tus pedidos se entreguen correctamente al proporcionar una dirección de envío precisa y actualizada.',
   keywords:

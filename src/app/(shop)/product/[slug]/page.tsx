@@ -20,22 +20,22 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  // read route params
+  // leer parámetros de ruta
   const slug = params.slug;
 
-  // fetch data
+  // obtener datos del producto
   const product = await getProductBySlug(slug);
 
-  // optionally access and extend (rather than replace) parent metadata
+  // opcionalmente acceder y extender (en lugar de reemplazar) los metadatos del padre
   // const previousImages = (await parent).openGraph?.images || []
 
   return {
     title: product?.title ?? 'Producto no encontrado',
-    description: product?.description ?? '',
+    description: `Descubre más sobre ${product?.title}. Encuentra detalles, precios y más. ${product?.description}`,
+    keywords: `${product?.title}, ${product?.gender}, productos, tienda online, compras`,
     openGraph: {
       title: product?.title ?? 'Producto no encontrado',
-      description: product?.description ?? '',
-      // images: [], // https://misitioweb.com/products/image.png
+      description: `Descubre más sobre ${product?.title}. Encuentra detalles, precios y más.`,
       images: [`/products/${product?.images[1]}`],
     },
   };

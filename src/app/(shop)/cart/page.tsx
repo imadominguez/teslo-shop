@@ -5,10 +5,7 @@ import { OrderSummary } from './ui/OrderSummary';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: {
-    template: '%s - Teslo | SHOP',
-    default: 'Carrito de compra',
-  },
+  title: 'Carrito de compra',
   description:
     'Explora nuestro carrito de compra en Teslo SHOP y agrega más artículos a tu selección. Continúa comprando con facilidad mientras revisas tus productos. ¡Simplifica tu experiencia de compra en línea hoy mismo!',
   keywords:

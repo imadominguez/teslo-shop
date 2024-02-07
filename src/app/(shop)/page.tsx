@@ -2,7 +2,15 @@ export const revalidate = 60;
 
 import { getPaginatedProductsWidthImages } from '@/actions';
 import { Pagination, ProductGrid, Title } from '@/components';
+import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
+
+export const metadata: Metadata = {
+  title: 'Tienda - Todos los productos',
+  description:
+    'Explora nuestra amplia selección de productos en nuestra tienda en línea.',
+  keywords: 'tienda, productos, compras, electrónica, moda, hogar',
+};
 
 interface Props {
   searchParams: {

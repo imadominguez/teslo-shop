@@ -4,10 +4,26 @@ import { redirect } from 'next/navigation';
 import { getOrderById } from '@/actions';
 import { currencyFormat } from '@/utils';
 import { OrderStatus, PaypalButton, Title } from '@/components';
+import { Metadata } from 'next';
 
 interface Props {
   params: {
     id: string;
+  };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params;
+  const { ok, order } = await getOrderById(id);
+
+  if (!ok) {
+    redirect('/');
+  }
+
+  return {
+    title: `Orden #${id.split('-').at(-1)}`,
+    description: `Detalles de la orden #${id} en Teslo SHOP.`,
+    keywords: 'Orden, Detalles de la orden, Estado de la orden, Teslo SHOP',
   };
 }
 

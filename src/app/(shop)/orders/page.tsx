@@ -5,7 +5,15 @@ import { Title } from '@/components';
 import { IoCardOutline } from 'react-icons/io5';
 import { getOrdersByUser } from '@/actions';
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Mis Órdenes - Teslo | SHOP',
+  description:
+    'Explora y gestiona tus órdenes en Teslo SHOP. Verifica el estado de tus pedidos y realiza un seguimiento de las transacciones.',
+  keywords:
+    'Órdenes, Teslo, SHOP, Gestión de Órdenes, Estado de Órdenes, Seguimiento de Órdenes',
+};
 export default async function OrdersPage() {
   const { ok, orders = [] } = await getOrdersByUser();
 
