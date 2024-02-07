@@ -4,6 +4,7 @@ import { SizeSelector, QuantitySelector } from '@/components';
 import { CartProduct, Product } from '@/interfaces';
 import { useCartStore } from '@/store';
 import { Size } from '@prisma/client';
+import clsx from 'clsx';
 
 import { useState } from 'react';
 interface Props {
@@ -82,7 +83,14 @@ export const AddToCart = ({ product }: Props) => {
       <QuantitySelector quantity={quantity} onQuantityChange={setQuantity} />
 
       {/* Boton agregar al carrito */}
-      <button onClick={addToCart} className="btn-primary my-5">
+      <button
+        disabled={product.inStock === 0}
+        onClick={addToCart}
+        className={clsx('my-5', {
+          'btn-primary': product.inStock > 0,
+          'btn-disable': product.inStock === 0,
+        })}
+      >
         Agregar al carrito
       </button>
     </>
