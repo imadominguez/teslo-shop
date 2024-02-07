@@ -23,10 +23,6 @@ export default async function Home({ searchParams }: Props) {
   const { products, currentPage, totalPages } =
     await getPaginatedProductsWidthImages({ page });
 
-  if (products.length === 0) {
-    redirect('/');
-  }
-
   return (
     <>
       <Title title="Tienda" subtitle="Todos los productos" className="mb-2" />
