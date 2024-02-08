@@ -45,29 +45,20 @@ export const Sidebar = () => {
 
       {/* Menú lateral */}
       <nav
-        // TODO: Efecto de deslizamiento
         className={clsx(
-          'fixed right-0 top-0 z-20 h-screen max-w-[500px] transform bg-white p-5 shadow-2xl transition-all duration-300',
+          'fixed right-0 top-0 z-20 h-screen w-[375px] transform overflow-auto overflow-x-hidden bg-white p-5 transition-all duration-300',
           {
             'translate-x-full': !isSideMenuOpen,
-            'translate-x-0': isSideMenuOpen,
+            'translate-x-0 shadow-2xl shadow-black': isSideMenuOpen,
           },
         )}
       >
         {/* Botón para cerrar el menú */}
-        <IoCloseOutline
-          size={50}
-          className="absolute right-5 top-5 cursor-pointer"
-          onClick={() => closeSideMenu()}
-        />
-
-        {/* Input de búsqueda */}
-        <div className="relative mt-14">
-          <IoSearchOutline size={20} className="absolute left-2 top-2" />
-          <input
-            type="text"
-            placeholder="Buscar..."
-            className="rounder w-full border-b-2 border-gray-200 bg-gray-50 py-1 pl-10 pr-10 text-xl focus:border-blue-500 focus:outline-none "
+        <div className="flex items-end justify-end">
+          <IoCloseOutline
+            size={50}
+            className="cursor-pointer"
+            onClick={() => closeSideMenu()}
           />
         </div>
 
@@ -78,7 +69,7 @@ export const Sidebar = () => {
             <Link
               href={'/profile'}
               onClick={() => closeSideMenu()}
-              className="mt-10 flex items-center rounded p-2 transition-all hover:bg-gray-100"
+              className="mt-3 flex items-center rounded p-2 transition-all hover:bg-gray-100"
             >
               <IoPersonOutline size={30} />
               <span className="ml-3 text-xl">Perfil</span>
