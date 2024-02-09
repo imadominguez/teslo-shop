@@ -6,7 +6,7 @@ export const ProductItemSkeleton = () => {
       className="mb-3 flex animate-pulse items-center justify-center gap-x-3"
     >
       {/* Placeholder para la imagen del producto */}
-      <div className="flex h-24 w-28 items-center justify-center rounded bg-gray-300 dark:bg-gray-300">
+      <div className="flex h-32 w-48 items-center justify-center rounded bg-gray-300 dark:bg-gray-300">
         <svg
           className="h-10 w-10 text-gray-200 dark:text-gray-400"
           aria-hidden="true"
@@ -20,8 +20,8 @@ export const ProductItemSkeleton = () => {
 
       {/* Placeholder para detalles del producto */}
       <div className="flex h-full w-full flex-col justify-between py-2">
-        <div className=" h-2.5 max-w-[250px] rounded-full bg-gray-200 dark:bg-gray-400"></div>
-        <div className=" h-2 max-w-[100px] rounded-full bg-gray-200 dark:bg-gray-400"></div>
+        <div className=" h-4 rounded-full bg-gray-200 dark:bg-gray-400"></div>
+        <div className=" h-2 max-w-[200px] rounded-full bg-gray-200 dark:bg-gray-400"></div>
         <div className=" h-2 max-w-[100px] rounded-full bg-gray-200 dark:bg-gray-400"></div>
         <div className=" h-3 max-w-[150px] rounded-full bg-gray-200 dark:bg-gray-400"></div>
         <div className=" h-2 max-w-[100px] rounded-full bg-gray-200 dark:bg-gray-400"></div>
