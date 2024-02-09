@@ -5,7 +5,7 @@ import { IoAddCircleOutline, IoRemoveCircleOutline } from 'react-icons/io5';
 // Propiedades esperadas para el componente QuantitySelector
 interface Props {
   quantity: number;
-  quantityTotal: number;
+  quantityTotal?: number;
   onQuantityChange: (value: number) => void;
 }
 
@@ -17,9 +17,11 @@ export const QuantitySelector = ({
 }: Props) => {
   // Función para manejar el cambio en la cantidad
   const onQuantityValue = (value: number) => {
-    console.log(quantity + value);
     // Verificar que la cantidad no pase el total de stock del producto
-    if (quantity + value > quantityTotal) return;
+    if (quantityTotal) {
+      if (quantity + value > quantityTotal) return;
+    }
+
     // Verificar que la nueva cantidad no sea menor que 1
     if (quantity + value < 1) return;
     // Llamar a la función proporcionada para cambiar la cantidad
