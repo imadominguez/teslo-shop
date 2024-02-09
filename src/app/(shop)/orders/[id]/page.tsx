@@ -29,8 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function OrderPage({ params }: Props) {
   const { id } = params;
-  const { ok, order } = await getOrderById(id);
-
+  const { ok, order, user } = await getOrderById(id);
+  console.log(user);
   if (!ok) {
     redirect('/');
   }
@@ -119,11 +119,14 @@ export default async function OrderPage({ params }: Props) {
             </div>
 
             <div className="mb-2 mt-5 w-full">
-              {isPaid ? (
+              {!isPaid && user?.role === 'admin' && (
                 <OrderStatus isPaid={isPaid} />
-              ) : (
+              )}
+
+              {!isPaid && user?.role === 'user' && (
                 <PaypalButton orderId={order!.id} amount={order!.total} />
               )}
+              {isPaid && <OrderStatus isPaid={isPaid} />}
             </div>
           </div>
         </div>
