@@ -1,7 +1,7 @@
-import { auth } from '@/auth.config';
-import { Metadata } from 'next';
 import Image from 'next/image';
+import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
+import { auth } from '@/auth.config';
 
 export const metadata: Metadata = {
   title: 'Perfil de Usuario',

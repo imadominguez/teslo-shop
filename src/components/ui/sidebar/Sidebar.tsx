@@ -13,7 +13,6 @@ import {
   IoLogOutOutline,
   IoPeopleOutline,
   IoPersonOutline,
-  IoSearchOutline,
   IoShirtOutline,
   IoTicketOutline,
 } from 'react-icons/io5';

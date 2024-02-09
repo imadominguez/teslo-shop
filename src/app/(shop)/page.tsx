@@ -1,9 +1,8 @@
 export const revalidate = 60;
 
+import { Metadata } from 'next';
 import { getPaginatedProductsWidthImages } from '@/actions';
 import { Pagination, ProductGrid, Title } from '@/components';
-import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Tienda - Todos los productos',

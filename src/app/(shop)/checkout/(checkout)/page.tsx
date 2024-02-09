@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import { Metadata } from 'next';
 import { Title } from '@/components';
 import { ProductsInCart } from './ui/ProductsInCart';
 import { PlaceOrder } from './ui/PlaceOrder';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Verificar Orden - Teslo | SHOP',

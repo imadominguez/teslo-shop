@@ -11,7 +11,7 @@ import 'swiper/css/thumbs';
 
 import './slideshow.css'; // Estilos personalizados
 import { Autoplay, FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import Image from 'next/image';
+
 import { ProductImage } from '../product-image/ProductImage';
 
 // Propiedades esperadas para el componente ProductSlideshow

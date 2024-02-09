@@ -1,10 +1,10 @@
 'use client';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { IoSearchOutline, IoCartOutline } from 'react-icons/io5';
 import { font } from '@/config/fonts';
 import { BtnCloseMenu } from './btn-close-menu';
 import { useCartStore } from '@/store';
-import { useEffect, useState } from 'react';
 
 export const TopMenu = () => {
   // Obtener el total de elementos en el carrito utilizando el estado global

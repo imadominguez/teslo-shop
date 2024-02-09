@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
+import { placeOrder } from '@/actions';
 import { useAddressStore, useCartStore } from '@/store';
 import { currencyFormat } from '@/utils';
-import { placeOrder } from '@/actions';
-import { useRouter } from 'next/navigation';
+import clsx from 'clsx';
 
 export const PlaceOrder = () => {
   const router = useRouter();

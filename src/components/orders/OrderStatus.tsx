@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import React from 'react';
 import { IoCartOutline } from 'react-icons/io5';
+import clsx from 'clsx';
 
 interface Props {
   isPaid: boolean;

@@ -1,8 +1,8 @@
 'use client';
-import { Product } from '@/interfaces';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
+import { Product } from '@/interfaces';
 
 // Propiedades esperadas para el componente ProductGridItem
 interface Props {

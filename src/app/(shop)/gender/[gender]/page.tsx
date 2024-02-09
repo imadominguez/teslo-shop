@@ -1,11 +1,11 @@
 export const revalidate = 60;
 
-import { notFound, redirect } from 'next/navigation';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Gender } from '@prisma/client';
 import { CategoryProducts } from '@/interfaces';
 import { getPaginatedProductsWidthImages } from '@/actions';
 import { Pagination, ProductGrid, Title } from '@/components';
-import { Metadata } from 'next';
 
 interface Props {
   params: {

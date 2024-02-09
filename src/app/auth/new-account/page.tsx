@@ -1,6 +1,6 @@
+import { Metadata } from 'next';
 import { font } from '@/config/fonts';
 import { RegisterForm } from './ui/RegisterForm';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Crear nueva cuenta',

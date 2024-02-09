@@ -1,6 +1,5 @@
 import type { Size } from '@/interfaces';
 import clsx from 'clsx';
-import React from 'react';
 
 // Propiedades esperadas para el componente SizeSelector
 interface Props {

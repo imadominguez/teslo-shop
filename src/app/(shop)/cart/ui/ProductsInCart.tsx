@@ -1,8 +1,7 @@
 'use client';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
 import { useCartStore } from '@/store';
 import { ProductImage, QuantitySelector } from '@/components';
 import { ProductItemSkeleton } from '@/components';
@@ -28,7 +27,6 @@ export const ProductsInCart = () => {
   if (!loaded) {
     return Array.from({ length: 3 }, (_, i) => <ProductItemSkeleton key={i} />);
   }
-
   // Si no hay productos en el carrito, redirigir a la página vacía
   if (productsInCart.length === 0) {
     redirect('/empty');
