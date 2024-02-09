@@ -6,6 +6,7 @@ interface State {
   cart: CartProduct[];
 
   // Métodos para obtener información del carrito
+  getTotalItemsById: (id: string) => number; // Obtiene la cantidad total de un producto en el carrito
   getTotalItems: () => number; // Obtiene el total de items en el carrito
   getSummaryInformation: () => {
     subTotal: number;
@@ -15,7 +16,7 @@ interface State {
   }; // Obtiene un resumen de la información del carrito
 
   // Métodos para modificar el carrito de compras
-  addProductToCart: (product: CartProduct) => void; // Agrega un producto al carrito
+  addProductToCart: (product: CartProduct, stock: number) => void; // Agrega un producto al carrito
   updateProductQuantity: (product: CartProduct, quantity: number) => void; // Actualiza la cantidad de un producto en el carrito
   removeProductFromCart: (product: CartProduct) => void; // Elimina un producto del carrito
   clearCart: () => void; // Limpia el carrito de compras
@@ -24,6 +25,17 @@ interface State {
 const storeApiCart: StateCreator<State> = (set, get) => ({
   cart: [],
   // ---------------------
+  getTotalItemsById: (id: string) => {
+    const { cart } = get();
+    // Obtener la cantidad total del producto en el carrito incluyendo las diferentes tallas
+    const prodcuts = cart.filter((prod) => prod.id === id);
+    console.log(prodcuts);
+    const totalQuantity = prodcuts.reduce((total, prod) => {
+      return total + prod.quantity;
+    }, 0);
+
+    return totalQuantity;
+  },
   getTotalItems: () => {
     const { cart } = get();
     return cart.reduce((total, prod) => total + prod.quantity, 0);
@@ -48,25 +60,49 @@ const storeApiCart: StateCreator<State> = (set, get) => ({
     };
   },
   // ----------------------------------------------
-  addProductToCart: (product: CartProduct) => {
+  addProductToCart: (product: CartProduct, stock: number) => {
     const { cart } = get();
-    // 1. Comprobar si el producto ya existe en el carrito con el mismo size
-    const productInCart = cart.some(
+
+    // Calculamos la cantidad total del producto en el carrito considerando todos los tamaños.
+    const totalQuantityInCart = cart.reduce((total, prod) => {
+      if (prod.id === product.id) {
+        return total + prod.quantity;
+      }
+      return total;
+    }, 0);
+
+    // Calculamos la cantidad total del producto si lo agregamos al carrito.
+    const totalNewQuantity = totalQuantityInCart + product.quantity;
+
+    // Verificamos si la cantidad total excede el stock.
+    if (totalNewQuantity > stock) {
+      alert('Alcanzaste el máximo de unidades del producto en tu carrito');
+      return;
+    }
+
+    // Verificamos si el producto ya existe en el carrito con el mismo tamaño.
+    const productInCartIndex = cart.findIndex(
       (prod) => product.id === prod.id && product.size === prod.size,
     );
-    if (!productInCart) {
+
+    if (productInCartIndex === -1) {
+      // El producto no está en el carrito.
       set({ cart: [...cart, product] });
       return;
     }
-    // 2. Se que el producto existe por size... tengo que incrementar
-    const updatedCartProduct = cart.map((prod) => {
-      if (prod.id === product.id && prod.size === product.size) {
-        return { ...prod, quantity: prod.quantity + product.quantity };
+
+    // El producto ya está en el carrito.
+    const updatedCartProduct = cart.map((prod, index) => {
+      if (index === productInCartIndex) {
+        const newQuantity = prod.quantity + product.quantity;
+        return { ...prod, quantity: newQuantity };
       }
       return prod;
     });
+
     set({ cart: updatedCartProduct });
   },
+
   // -------------------------------------------------------------------
   updateProductQuantity: (product: CartProduct, quantity: number) => {
     const { cart } = get();

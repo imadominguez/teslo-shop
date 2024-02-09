@@ -8,11 +8,13 @@ import clsx from 'clsx';
 
 import { useState } from 'react';
 import { IoAlertCircleOutline } from 'react-icons/io5';
+import { toast } from 'sonner';
 interface Props {
   product: Product;
 }
 // Componente para agregar productos al carrito
 export const AddToCart = ({ product }: Props) => {
+  const totalItemsById = useCartStore((state) => state.getTotalItemsById);
   const addProductToCart = useCartStore((state) => state.addProductToCart);
 
   // Estado para la talla seleccionada, cantidad y si se ha enviado la solicitud
@@ -38,9 +40,24 @@ export const AddToCart = ({ product }: Props) => {
       image: product.images[0],
       slug: product.slug,
     };
-
+    // Verificar si hay suficiente stock para agregar al carrito
+    const totalItemsProduct = totalItemsById(product.id);
+    const totalItems = totalItemsProduct + quantity;
+    const stock = product.inStock;
+    if (quantity > stock) {
+      toast.error('No hay suficiente stock');
+      setPosted(false);
+      return;
+    }
+    if (totalItems > stock) {
+      toast.error(
+        'Las unidades del producto en tu carrito supera el stock disponible',
+      );
+      setPosted(false);
+      return;
+    }
     // Llamar a la función para agregar el producto al carrito
-    addProductToCart(cartProduct);
+    addProductToCart(cartProduct, stock);
 
     // Restablecer el estado después de agregar al carrito
     setPosted(false);
@@ -69,11 +86,7 @@ export const AddToCart = ({ product }: Props) => {
       />
 
       {/* Selector de Cantidad */}
-      <QuantitySelector
-        quantity={quantity}
-        onQuantityChange={setQuantity}
-        quantityTotal={product.inStock}
-      />
+      <QuantitySelector quantity={quantity} onQuantityChange={setQuantity} />
 
       {/* Boton agregar al carrito */}
       <button
