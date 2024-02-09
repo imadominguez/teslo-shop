@@ -6,11 +6,13 @@ import Image from 'next/image';
 import { useCartStore } from '@/store';
 import { ProductImage, QuantitySelector } from '@/components';
 import { ProductItemSkeleton } from '@/components';
+import { IoCartOutline } from 'react-icons/io5';
 
 // Componente para mostrar los productos en el carrito
 export const ProductsInCart = () => {
   const [loaded, setLoaded] = useState(false);
   const productsInCart = useCartStore((state) => state.cart);
+  const clearCart = useCartStore((state) => state.clearCart);
   const removeProductFromCart = useCartStore(
     (state) => state.removeProductFromCart,
   );
@@ -88,6 +90,13 @@ export const ProductsInCart = () => {
           </div>
         </div>
       ))}
+      <button
+        onClick={clearCart}
+        className=" btn-danger mb-5 flex  items-center justify-center gap-x-2"
+      >
+        <IoCartOutline size={24} />
+        Vaciar carrito
+      </button>
     </>
   );
 };
