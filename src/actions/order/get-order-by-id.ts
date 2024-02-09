@@ -54,6 +54,7 @@ export const getOrderById = async (id: string) => {
     return {
       ok: true,
       order: order,
+      user: session.user,
     };
   } catch (error) {
     console.log(error);
@@ -63,18 +64,4 @@ export const getOrderById = async (id: string) => {
       message: 'Hable con el administrador',
     };
   }
-  // const order = await prisma.order.findUnique({
-  //   where: {
-  //     id,
-  //   },
-  //   include: {
-  //     OrderAddress: true,
-  //     OrderItem: true,
-  //   },
-  // });
-  // if (!order) {
-  //   return null;
-  // }
-  // const { userId, ...restOrder } = order;
-  // return restOrder;
 };
