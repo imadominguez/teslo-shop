@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function OrderPage({ params }: Props) {
   const { id } = params;
   const { ok, order, user } = await getOrderById(id);
-  console.log(user);
+
   if (!ok) {
     redirect('/');
   }
@@ -73,24 +73,26 @@ export default async function OrderPage({ params }: Props) {
             ))}
           </div>
 
-          <div className="flex flex-col rounded-xl bg-white p-7 shadow-xl">
-            <h2 className="mb-2 text-2xl">Direccion de entrega</h2>
-            <div className="mb-10 flex flex-col font-bold">
+          <div className="flex flex-col rounded-xl bg-white p-7 shadow-xl dark:bg-neutral-900">
+            <h2 className="mb-2 text-2xl font-semibold">
+              Direccion de entrega
+            </h2>
+            <div className="mb-10 flex flex-col">
               <p className="text-xl">
                 {address!.firstName} {address!.lastName}
               </p>
-              <small>{address!.address}</small>
-              <small>{address!.address2}</small>
-              <small>{address!.countryId}</small>
-              <small>CP: {address!.postalCode}</small>
-              <small>{address!.phone}</small>
+              <span>{address!.address}</span>
+              <span>{address!.address2}</span>
+              <span>{address!.countryId}</span>
+              <span>CP: {address!.postalCode}</span>
+              <span>{address!.phone}</span>
             </div>
 
             {/* Divider */}
 
             <div className="mb-10 h-0.5 w-full rounded bg-gray-200" />
 
-            <h2 className="mb-2 text-2xl">Resumen de orden</h2>
+            <h2 className="mb-2 text-2xl font-semibold">Resumen de orden</h2>
 
             <div className="grid grid-cols-2">
               <span>No Productos</span>
@@ -126,6 +128,11 @@ export default async function OrderPage({ params }: Props) {
               {!isPaid && user?.role === 'user' && (
                 <PaypalButton orderId={order!.id} amount={order!.total} />
               )}
+              {!isPaid &&
+                user?.role === 'admin' &&
+                user.id === order?.userId && (
+                  <PaypalButton orderId={order!.id} amount={order!.total} />
+                )}
               {isPaid && <OrderStatus isPaid={isPaid} />}
             </div>
           </div>

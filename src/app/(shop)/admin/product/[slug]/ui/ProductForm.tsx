@@ -125,7 +125,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Título</span>
           <input
             type="text"
-            className="rounded-md border bg-gray-200 p-2"
+            className="rounded-md border bg-gray-200 p-2 dark:border-neutral-900 dark:bg-neutral-900"
             {...register('title', { required: true })}
           />
         </div>
@@ -134,7 +134,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Slug</span>
           <input
             type="text"
-            className="rounded-md border bg-gray-200 p-2"
+            className="rounded-md border bg-gray-200 p-2 dark:border-neutral-900 dark:bg-neutral-900"
             {...register('slug', { required: true })}
           />
         </div>
@@ -143,7 +143,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Descripción</span>
           <textarea
             rows={5}
-            className="rounded-md border bg-gray-200 p-2"
+            className="rounded-md border bg-gray-200 p-2 dark:border-neutral-900 dark:bg-neutral-900"
             {...register('description', { required: true })}
           ></textarea>
         </div>
@@ -152,7 +152,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Price</span>
           <input
             type="number"
-            className="rounded-md border bg-gray-200 p-2"
+            className="rounded-md border bg-gray-200 p-2 dark:border-neutral-900 dark:bg-neutral-900"
             {...register('price', { required: true, min: 0 })}
           />
         </div>
@@ -161,7 +161,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Tags</span>
           <input
             type="text"
-            className="rounded-md border bg-gray-200 p-2"
+            className="rounded-md border bg-gray-200 p-2 dark:border-neutral-900 dark:bg-neutral-900"
             {...register('tags', { required: true })}
           />
         </div>
@@ -169,7 +169,7 @@ export const ProductForm = ({ product, categories }: Props) => {
         <div className="mb-2 flex flex-col">
           <span>Gender</span>
           <select
-            className="rounded-md border bg-gray-200 p-2"
+            className="rounded-md border bg-gray-200 p-2 dark:border-neutral-900 dark:bg-neutral-900"
             {...register('gender', { required: true })}
           >
             <option value="">[Seleccione]</option>
@@ -183,7 +183,7 @@ export const ProductForm = ({ product, categories }: Props) => {
         <div className="mb-2 flex flex-col">
           <span>Categoria</span>
           <select
-            className="rounded-md border bg-gray-200 p-2"
+            className="rounded-md border bg-gray-200 p-2 dark:border-neutral-900 dark:bg-neutral-900"
             {...register('categoryId', { required: true })}
           >
             <option value="">[Seleccione]</option>
@@ -204,7 +204,7 @@ export const ProductForm = ({ product, categories }: Props) => {
           <span>Inventario</span>
           <input
             type="number"
-            className="rounded-md border bg-gray-200 p-2"
+            className="rounded-md border bg-gray-200 p-2 dark:border-neutral-900 dark:bg-neutral-900"
             {...register('inStock', { required: true, min: 0 })}
           />
         </div>
@@ -223,6 +223,7 @@ export const ProductForm = ({ product, categories }: Props) => {
                   {
                     '!bg-blue-500 text-white':
                       getValues('sizes').includes(size),
+                    'text-black': !getValues('sizes').includes(size),
                   },
                 )}
               >
@@ -236,7 +237,7 @@ export const ProductForm = ({ product, categories }: Props) => {
             <input
               type="file"
               multiple
-              className="rounded-md border bg-gray-200 p-2"
+              className="rounded-md border bg-gray-200 p-2 dark:border-neutral-900 dark:bg-neutral-900"
               accept="image/png, image/jpeg, image/avif"
               {...register('images')}
             />

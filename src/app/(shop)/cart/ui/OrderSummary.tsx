@@ -22,18 +22,13 @@ export const OrderSummary = () => {
   if (!loaded) {
     return (
       // Placeholder animado mientras se carga la información
-      <div className="sticky top-20 flex h-64 flex-col gap-4 rounded-xl bg-white p-7 shadow-xl">
-        <div className="h-3 w-2/3 animate-pulse rounded bg-gray-700"></div>
-        <div className="mb-4 h-3 w-2/3 animate-pulse rounded bg-gray-700"></div>
-        <div className="mb-2 h-3 w-2/3 animate-pulse rounded bg-gray-700"></div>
-        <div className="h-3 w-2/3 animate-pulse rounded bg-gray-700"></div>
-      </div>
+      <div className="sticky top-20 flex h-64 flex-col gap-4 rounded-xl bg-white p-7 shadow-xl dark:bg-neutral-800"></div>
     );
   }
 
   // Renderización del resumen de la orden
   return (
-    <div className="sticky top-20 h-fit rounded-xl bg-white p-7 shadow-xl">
+    <div className="sticky top-20 h-fit rounded-xl bg-white p-7 shadow-xl dark:bg-neutral-800">
       <h2 className="mb-2 text-2xl">Resumen de orden</h2>
 
       {/* Grid para mostrar la información de la orden */}

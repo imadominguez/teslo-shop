@@ -43,7 +43,7 @@ export default async function OrdersPage() {
 
       <div className="mb-10">
         <table className="min-w-full">
-          <thead className="border-b bg-gray-200">
+          <thead className="border-b bg-gray-200 dark:border-gray-500 dark:bg-gray-500">
             <tr>
               <th
                 scope="col"
@@ -75,7 +75,7 @@ export default async function OrdersPage() {
             {orders.map((order) => (
               <tr
                 key={order.tax}
-                className="border-b bg-white transition duration-300 ease-in-out hover:bg-gray-100"
+                className="border-b bg-white transition duration-300 ease-in-out hover:bg-gray-100 dark:border-gray-500 dark:bg-gray-400 dark:hover:bg-gray-300"
               >
                 <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
                   {order.id.split('-').at(0)}

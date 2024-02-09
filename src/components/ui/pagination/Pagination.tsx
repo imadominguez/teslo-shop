@@ -57,7 +57,7 @@ export const Pagination = ({ totalPages }: Props) => {
           {/* Botón para ir a la página anterior */}
           <li className="page-item">
             <Link
-              className="page-link relative block rounded border-0 bg-transparent px-3 py-1.5 text-gray-800 outline-none transition-all duration-300 hover:bg-gray-200 hover:text-gray-800 focus:shadow-none"
+              className="page-link relative block rounded border-0 bg-transparent px-3 py-1.5 outline-none transition-all  duration-300 hover:bg-gray-300 focus:shadow-none dark:hover:bg-gray-200  dark:hover:text-gray-800"
               href={createPageUrl(+currentPage - 1)}
               aria-disabled="true"
             >
@@ -70,11 +70,11 @@ export const Pagination = ({ totalPages }: Props) => {
             <li key={`${page} + ${index} + 1`} className="page-item">
               <Link
                 className={clsx(
-                  'page-link relative block rounded border-0 px-3 py-1.5 text-gray-800 outline-none transition-all duration-300 hover:text-gray-800 focus:shadow-none',
+                  'page-link relative block rounded border-0 px-3 py-1.5  outline-none transition-all duration-300  focus:shadow-none',
                   {
-                    'bg-blue-700 text-white shadow-md hover:bg-blue-500 hover:text-white':
+                    'bg-blue-700 text-white shadow-md hover:bg-blue-600 hover:text-white':
                       page === +currentPage,
-                    'hover:bg-gray-300': page !== +currentPage,
+                    'hover:bg-gray-500 hover:text-white': page !== +currentPage,
                   },
                 )}
                 href={createPageUrl(page)}
@@ -87,7 +87,7 @@ export const Pagination = ({ totalPages }: Props) => {
           {/* Botón para ir a la página siguiente */}
           <li className="page-item">
             <Link
-              className="page-link relative block rounded border-0 bg-transparent px-3 py-1.5 text-gray-800 outline-none transition-all duration-300 hover:bg-gray-200 hover:text-gray-800 focus:shadow-none"
+              className="page-link relative block rounded border-0 bg-transparent px-3 py-1.5 outline-none transition-all  duration-300 hover:bg-gray-300 focus:shadow-none dark:hover:bg-gray-200  dark:hover:text-gray-800"
               href={createPageUrl(+currentPage + 1)}
             >
               <IoChevronForwardOutline size={20} />
