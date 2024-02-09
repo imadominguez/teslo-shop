@@ -14,7 +14,6 @@ export const placeOrder = async (
   productsIds: ProductToOrder[],
   address: Address,
 ) => {
-  console.log(productsIds);
   const session = await auth();
   const userId = session?.user.id;
 
@@ -117,11 +116,6 @@ export const placeOrder = async (
           },
         },
       });
-
-      // Validamos si el price es 0, entonces, lanzamos un error
-      // if (order.total === 0) {
-      //   throw new Error('El precio es 0');
-      // }
 
       // 3. Crear la direccion de la orden
       const { country, ...restAddress } = address;
