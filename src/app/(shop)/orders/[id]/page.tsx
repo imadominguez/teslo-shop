@@ -49,7 +49,7 @@ export default async function OrderPage({ params }: Props) {
             {order!.OrderItem.map((item) => (
               <div
                 key={item.product.slug + '-' + item.size}
-                className="mb-5 flex"
+                className="dark:bg-dark-second mb-5 flex bg-gray-200"
               >
                 <Image
                   src={`/products/${item.product.ProductImage[0].url}`}
@@ -73,7 +73,7 @@ export default async function OrderPage({ params }: Props) {
             ))}
           </div>
 
-          <div className="flex flex-col rounded-xl bg-white p-7 shadow-xl dark:bg-neutral-900">
+          <div className="dark:shadow-dark-second dark:bg-dark-second flex flex-col rounded-xl bg-gray-200 p-7 shadow-lg">
             <h2 className="mb-2 text-2xl font-semibold">
               Direccion de entrega
             </h2>
@@ -120,7 +120,7 @@ export default async function OrderPage({ params }: Props) {
               </span>
             </div>
 
-            <div className="mb-2 mt-5 w-full">
+            <div className="mb-2 mt-5 w-full bg-transparent">
               {!isPaid && user?.role === 'admin' && (
                 <OrderStatus isPaid={isPaid} />
               )}
