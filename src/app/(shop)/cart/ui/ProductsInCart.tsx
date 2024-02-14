@@ -38,7 +38,7 @@ export const ProductsInCart = () => {
       {productsInCart.map((product) => (
         <div
           key={`${product.slug}-${product.size}${Math.random()}`}
-          className="mb-5 flex"
+          className="dark:bg-dark-second mb-5 flex rounded-xl bg-gray-200"
         >
           {/* Imagen del producto */}
           <ProductImage
