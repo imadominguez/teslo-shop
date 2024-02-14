@@ -38,26 +38,35 @@ export const RegisterForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
       <label htmlFor="text">Nombre completo</label>
       <input
-        className={clsx('mb-5 rounded border bg-gray-200 px-5 py-2', {
-          'border-red-500': errors.name,
-        })}
+        className={clsx(
+          'dark:bg-bg-dark-second dark:border-bg-dark-second mb-5  rounded border bg-gray-200 px-5 py-2',
+          {
+            'border-red-500': errors.name,
+          },
+        )}
         type="text"
         autoFocus
         {...register('name', { required: true })}
       />
       <label htmlFor="email">Correo electronico</label>
       <input
-        className={clsx('mb-5 rounded border bg-gray-200 px-5 py-2', {
-          'border-red-500': errors.email,
-        })}
+        className={clsx(
+          'dark:bg-bg-dark-second dark:border-bg-dark-second mb-5  rounded border bg-gray-200 px-5 py-2',
+          {
+            'border-red-500': errors.email,
+          },
+        )}
         type="email"
         {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
       />
       <label htmlFor="email">Contraseña</label>
       <input
-        className={clsx('mb-5 rounded border bg-gray-200 px-5 py-2', {
-          'border-red-500': errors.password,
-        })}
+        className={clsx(
+          'dark:bg-bg-dark-second dark:border-bg-dark-second mb-5  rounded border bg-gray-200 px-5 py-2',
+          {
+            'border-red-500': errors.password,
+          },
+        )}
         type="password"
         {...register('password', { required: true, minLength: 6 })}
       />
