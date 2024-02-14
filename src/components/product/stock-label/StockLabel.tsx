@@ -31,13 +31,13 @@ export const StockLabel = ({ slug }: Props) => {
     <>
       {!loading ? (
         // Etiqueta de stock cuando el stock ha sido cargado
-        <h3 className={`${font.className} text-lg font-bold antialiased`}>
+        <h3 className={`${font.className} mb-1 text-lg font-bold antialiased`}>
           Stock: {stock}
         </h3>
       ) : (
         // Placeholder animado mientras se carga el stock
         <span
-          className={`${font.className} block w-24 animate-pulse rounded bg-gray-600/20 text-lg font-bold antialiased`}
+          className={`${font.className} mb-1 block w-24 animate-pulse rounded bg-gray-600/20 text-lg font-bold antialiased`}
         >
           &nbsp;
         </span>

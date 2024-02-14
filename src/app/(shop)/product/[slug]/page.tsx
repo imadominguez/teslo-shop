@@ -10,6 +10,7 @@ import {
   StockLabel,
 } from '@/components';
 import { AddToCart } from './ui/AddToCart';
+import { currencyFormat } from '@/utils';
 
 interface Props {
   params: {
@@ -77,17 +78,21 @@ export default async function ProductPage({ params }: Props) {
 
       {/* Product Info  */}
       <div className="col-span-1  px-5">
-        <StockLabel slug={product.slug} />
-        <h1 className={`${font.className} text-xl font-bold antialiased`}>
+        <h1 className={`${font.className} antialiase mb-3 text-xl font-bold`}>
           {product.title}
         </h1>
+        <StockLabel slug={product.slug} />
 
-        <p className="mb-5 text-lg">{product.price}</p>
+        <p className="mb-5 text-lg font-semibold">
+          {currencyFormat(product.price)}
+        </p>
 
         <AddToCart product={product} />
         {/* Descripcion del producto  */}
-        <h3 className="text-sm font-bold ">Descripcion</h3>
-        <p className="font-light">{product.description}</p>
+        <h3 className="font-bold ">Descripcion</h3>
+        <p className="text-dark-text text-pretty font-light">
+          {product.description}
+        </p>
       </div>
     </div>
   );

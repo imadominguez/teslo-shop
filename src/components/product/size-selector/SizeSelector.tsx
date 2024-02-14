@@ -18,7 +18,7 @@ export const SizeSelector = ({
     // Contenedor general con margen superior
     <div className="my-5">
       {/* Título de las tallas disponibles */}
-      <h3 className="mb-4 font-bold">Tallas disponibles</h3>
+      <h3 className="mb-2 font-bold">Tallas disponibles</h3>
 
       {/* Contenedor flex para los botones de tallas */}
       <div className="flex">
@@ -28,9 +28,12 @@ export const SizeSelector = ({
           <button
             key={size}
             onClick={() => onSizeChange(size)}
-            className={clsx('mx-2 text-lg hover:underline', {
-              underline: size === selectedSize,
-            })}
+            className={clsx(
+              'hover:bg-bg-dark-accent text-dark-text mx-1 h-10 w-10 rounded-full p-2 text-lg hover:text-white',
+              {
+                ' bg-bg-dark-accent text-white  ': size === selectedSize,
+              },
+            )}
           >
             {size}
           </button>
