@@ -2,6 +2,7 @@
 
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { SessionProvider } from 'next-auth/react';
+import { ThemeProvider } from 'next-themes';
 
 interface Props {
   children: React.ReactNode;
@@ -15,7 +16,11 @@ export const Providers = ({ children }: Props) => {
         currency: 'USD',
       }}
     >
-      <SessionProvider>{children}</SessionProvider>
+      <SessionProvider>
+        <ThemeProvider defaultTheme="system" attribute="class">
+          {children}
+        </ThemeProvider>
+      </SessionProvider>
     </PayPalScriptProvider>
   );
 };
