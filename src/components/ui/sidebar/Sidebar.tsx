@@ -16,6 +16,7 @@ import {
   IoShirtOutline,
   IoTicketOutline,
 } from 'react-icons/io5';
+import Image from 'next/image';
 
 export const Sidebar = () => {
   // Obtener el estado del menú lateral abierto y la función para cerrarlo
@@ -43,9 +44,10 @@ export const Sidebar = () => {
       )}
 
       {/* Menú lateral */}
-      <nav
+
+      <aside
         className={clsx(
-          'fixed right-0 top-0 z-20 h-screen w-[375px] transform overflow-auto overflow-x-hidden bg-white p-5 transition-all duration-300 dark:bg-neutral-900',
+          'dark:bg-bg-dark fixed right-0 top-0 z-20 h-screen w-[375px] transform overflow-auto overflow-x-hidden bg-white p-5 transition-all duration-300',
           {
             'translate-x-full': !isSideMenuOpen,
             'translate-x-0 shadow-2xl shadow-black': isSideMenuOpen,
@@ -55,90 +57,107 @@ export const Sidebar = () => {
         {/* Botón para cerrar el menú */}
         <div className="flex items-end justify-end">
           <IoCloseOutline
-            size={50}
-            className="cursor-pointer"
+            className="h-10 w-10 cursor-pointer"
             onClick={() => closeSideMenu()}
           />
         </div>
-
-        {/* Enlaces del menú */}
-
         {isAunthenticated && (
           <>
+            <div className="-mx-2 mt-6 flex flex-col items-center">
+              <Image
+                width={600}
+                height={600}
+                className="mx-2 h-24 w-24 rounded-full object-cover"
+                src={
+                  session?.user.image
+                    ? session.user.image
+                    : '/imgs/placeholder.jpg'
+                }
+                alt="avatar"
+              />
+              <h4 className="mx-2 mt-2 font-medium text-gray-800 dark:text-gray-200">
+                {session.user.name}
+              </h4>
+              <p className="mx-2 mt-1 text-sm font-medium text-gray-600 dark:text-gray-400">
+                {session.user.email}
+              </p>
+            </div>
             <Link
+              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
               href={'/profile'}
               onClick={() => closeSideMenu()}
-              className="mt-3 flex items-center rounded p-2 transition-all hover:bg-gray-100 dark:hover:bg-neutral-700"
             >
-              <IoPersonOutline size={24} />
-              <span className="ml-3 text-xl">Perfil</span>
+              <IoPersonOutline className="h-5 w-5" />
+
+              <span className="mx-4 font-medium">Perfil</span>
             </Link>
             <Link
               href={'/orders'}
               onClick={() => closeSideMenu()}
-              className="mt-5 flex items-center rounded p-2 transition-all hover:bg-gray-100 dark:hover:bg-neutral-700"
+              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
-              <IoTicketOutline size={24} />
-              <span className="ml-3 text-xl">Ordenes</span>
+              <IoTicketOutline className="h-5 w-5" />
+              <span className="mx-4 font-medium">Ordenes</span>
             </Link>
           </>
         )}
 
         {!isAunthenticated && (
-          <Link
-            href={'/auth/login'}
-            onClick={() => closeSideMenu()}
-            className="mt-5 flex items-center rounded p-2 transition-all hover:bg-gray-100 dark:hover:bg-neutral-700"
-          >
-            <IoLogInOutline size={24} />
-            <span className="ml-3 text-xl">Ingresar</span>
-          </Link>
+          <>
+            <Link
+              href={'/auth/login'}
+              onClick={() => closeSideMenu()}
+              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            >
+              <IoLogInOutline className="h-5 w-5" />
+              <span className="mx-4 font-medium">Ingresar</span>
+            </Link>
+          </>
         )}
 
         {isAunthenticated && (
           <button
             onClick={() => logout()}
-            // href={'/'}
-            className="mt-5 flex w-full items-center rounded p-2 transition-all hover:bg-gray-100 dark:hover:bg-neutral-700"
+            className="dark:hover:bg-bg-dark-second mt-5 flex w-full transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
           >
-            <IoLogOutOutline size={24} />
-            <span className="ml-3 text-xl">Salir</span>
+            <IoLogOutOutline className="h-5 w-5" />
+            <span className="mx-4 font-medium">Salir</span>
           </button>
         )}
 
         {isAdmin && (
           <>
-            <div className="my-10 h-px w-full bg-gray-200 dark:bg-neutral-500" />
-            <h3 className=" text-center text-2xl font-semibold text-gray-600 dark:text-gray-300">
+            <div className="my-5 h-px w-full bg-gray-200 dark:bg-neutral-500" />
+            <h3 className=" text-center text-xl font-semibold text-gray-600 dark:text-gray-300">
               Dashboard
             </h3>
             <Link
               href={'/admin/products'}
               onClick={() => closeSideMenu()}
-              className="mt-8 flex items-center rounded p-2 transition-all hover:bg-gray-100 dark:hover:bg-neutral-700"
+              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
-              <IoShirtOutline size={24} />
-              <span className="ml-3 text-xl">Productos</span>
+              <IoShirtOutline className="h-5 w-5" />
+              <span className="mx-4 font-medium">Productos</span>
             </Link>
             <Link
               href={'/admin/orders'}
               onClick={() => closeSideMenu()}
-              className="mt-5 flex items-center rounded p-2 transition-all hover:bg-gray-100 dark:hover:bg-neutral-700"
+              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
-              <IoTicketOutline size={24} />
-              <span className="ml-3 text-xl">Ordenes</span>
+              <IoTicketOutline className="h-5 w-5" />
+              <span className="mx-4 font-medium">Ordenes</span>
             </Link>
             <Link
               href={'/admin/users'}
               onClick={() => closeSideMenu()}
-              className="mt-5 flex items-center rounded p-2 transition-all hover:bg-gray-100 dark:hover:bg-neutral-700"
+              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
-              <IoPeopleOutline size={24} />
-              <span className="ml-3 text-xl">Usuarios</span>
+              <IoPeopleOutline className="h-5 w-5" />
+              <span className="mx-4 font-medium">Usuarios</span>
             </Link>
           </>
         )}
-      </nav>
+      </aside>
     </div>
   );
 };
