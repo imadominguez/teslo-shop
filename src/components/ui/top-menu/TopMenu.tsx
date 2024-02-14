@@ -5,6 +5,7 @@ import { IoSearchOutline, IoCartOutline } from 'react-icons/io5';
 import { font } from '@/config/fonts';
 import { BtnCloseMenu } from './btn-close-menu';
 import { useCartStore } from '@/store';
+import { ThemeButton } from './ThemeButton';
 
 export const TopMenu = () => {
   // Obtener el total de elementos en el carrito utilizando el estado global
@@ -72,7 +73,7 @@ export const TopMenu = () => {
             <IoCartOutline className="h-5 w-5" />
           </div>
         </Link>
-
+        <ThemeButton />
         {/* Componente para cerrar el menú */}
         <BtnCloseMenu />
       </div>
