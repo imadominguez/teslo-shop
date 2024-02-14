@@ -47,7 +47,7 @@ export const Sidebar = () => {
 
       <aside
         className={clsx(
-          'dark:bg-bg-dark fixed right-0 top-0 z-20 h-screen w-[375px] transform overflow-auto overflow-x-hidden bg-white p-5 transition-all duration-300',
+          'dark:bg-dark fixed right-0 top-0 z-20 h-screen w-[375px] transform overflow-auto overflow-x-hidden bg-white p-5 transition-all duration-300',
           {
             'translate-x-full': !isSideMenuOpen,
             'translate-x-0 shadow-2xl shadow-black': isSideMenuOpen,
@@ -83,7 +83,7 @@ export const Sidebar = () => {
               </p>
             </div>
             <Link
-              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              className="dark:hover:bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
               href={'/profile'}
               onClick={() => closeSideMenu()}
             >
@@ -94,7 +94,7 @@ export const Sidebar = () => {
             <Link
               href={'/orders'}
               onClick={() => closeSideMenu()}
-              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              className="dark:hover:bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
               <IoTicketOutline className="h-5 w-5" />
               <span className="mx-4 font-medium">Ordenes</span>
@@ -107,7 +107,7 @@ export const Sidebar = () => {
             <Link
               href={'/auth/login'}
               onClick={() => closeSideMenu()}
-              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              className="dark:hover:bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
               <IoLogInOutline className="h-5 w-5" />
               <span className="mx-4 font-medium">Ingresar</span>
@@ -118,7 +118,7 @@ export const Sidebar = () => {
         {isAunthenticated && (
           <button
             onClick={() => logout()}
-            className="dark:hover:bg-bg-dark-second mt-5 flex w-full transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            className="dark:hover:bg-dark-second mt-5 flex w-full transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
           >
             <IoLogOutOutline className="h-5 w-5" />
             <span className="mx-4 font-medium">Salir</span>
@@ -134,7 +134,7 @@ export const Sidebar = () => {
             <Link
               href={'/admin/products'}
               onClick={() => closeSideMenu()}
-              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              className="dark:hover:bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
               <IoShirtOutline className="h-5 w-5" />
               <span className="mx-4 font-medium">Productos</span>
@@ -142,7 +142,7 @@ export const Sidebar = () => {
             <Link
               href={'/admin/orders'}
               onClick={() => closeSideMenu()}
-              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              className="dark:hover:bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
               <IoTicketOutline className="h-5 w-5" />
               <span className="mx-4 font-medium">Ordenes</span>
@@ -150,7 +150,7 @@ export const Sidebar = () => {
             <Link
               href={'/admin/users'}
               onClick={() => closeSideMenu()}
-              className="dark:hover:bg-bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+              className="dark:hover:bg-dark-second mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             >
               <IoPeopleOutline className="h-5 w-5" />
               <span className="mx-4 font-medium">Usuarios</span>
