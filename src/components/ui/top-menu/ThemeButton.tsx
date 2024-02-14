@@ -14,7 +14,7 @@ export const ThemeButton = () => {
         onClick={changeTheme}
         type="button"
         aria-label="Toggle Dark Mode"
-        className="m-2 mr-0 flex items-center justify-center rounded-md p-2 transition-all  hover:bg-gray-100 hover:text-black  "
+        className="dark:hover:bg-bg-dark-accent m-2 mr-0 rounded-md p-2 transition-all hover:bg-gray-100"
       >
         {theme === 'light' ? (
           <>
