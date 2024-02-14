@@ -79,7 +79,7 @@ export const ProductGridItem = ({ product }: Props) => {
       <div className="flex flex-col p-4">
         <Link
           href={`/product/${product.slug}`}
-          className="text-xl font-bold text-gray-700 dark:text-gray-400"
+          className="text-xl font-bold dark:text-gray-400"
         >
           {product.title}
         </Link>
