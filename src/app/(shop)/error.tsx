@@ -16,7 +16,7 @@ export default function error() {
         <h1 className="mb-2 text-2xl font-semibold">
           Sitio Temporalmente Cerrado
         </h1>
-        <p className="text-gray-600">
+        <p className="text-gray-600 dark:text-dark-text-light">
           Estamos realizando mejoras. Vuelve pronto.
         </p>
       </div>
