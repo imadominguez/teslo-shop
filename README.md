@@ -41,8 +41,14 @@ Sigue estos pasos para configurar el proyecto en tu entorno de desarrollo:
 - usuario: user-user@gmail.com
 - constraseña: 123456
 
-## Cómo correr en producción
+## Acceso al Dashboard
 
-- Se proporcionarán instrucciones detalladas una vez que el entorno de producción esté configurado y listo para desplegar.
+Una vez hayas iniciado sesión como administrador, podrás acceder al Dashboard directamente desde el menú de navegación principal. Simplemente sigue estos pasos:
 
-¡Disfruta explorando Teslo-Shop y desarrollando con las últimas tecnologías de Next.js! Si tienes alguna pregunta o problema, no dudes en crear un issue en este repositorio. ¡Buena codificación!
+1. Inicia sesión con la cuenta de administrador utilizando las credenciales proporcionadas en la sección anterior.
+
+2. Una vez dentro de la aplicación, observa el menú de navegación. Encontrarás una sección etiquetada como "Dashboard".
+
+3. Haz clic en la opción correspondiente al Dashboard. Esto te llevará a la sección donde podrás administrar los productos, órdenes y usuarios de Teslo-Shop de manera centralizada y eficiente.
+
+¡Explora las capacidades del Dashboard y aprovecha al máximo la administración de Teslo-Shop como un verdadero administrador! 🚀🔧
