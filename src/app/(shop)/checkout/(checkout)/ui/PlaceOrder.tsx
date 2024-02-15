@@ -58,7 +58,7 @@ export const PlaceOrder = () => {
   }
 
   return (
-    <div className="flex flex-col justify-between rounded-xl bg-white p-7 shadow-xl dark:bg-neutral-900">
+    <div className="dark:bg-dark-second dark:shadow-dark-second flex flex-col justify-between rounded-xl bg-gray-200 p-7 shadow-lg">
       <h2 className="mb-2 text-2xl font-semibold">Direccion de entrega</h2>
       <div className="mb-10 flex flex-col ">
         <p className="text-xl">

@@ -35,19 +35,19 @@ export const TopMenu = () => {
       <div className="hidden sm:block">
         <Link
           href={'/gender/men'}
-          className="dark:hover:bg-bg-dark-accent m-2 rounded-md p-2 transition-all hover:bg-gray-100"
+          className="m-2 rounded-md p-2 transition-all hover:bg-gray-100 dark:hover:bg-dark-accent"
         >
           Hombres
         </Link>
         <Link
           href={'/gender/women'}
-          className="dark:hover:bg-bg-dark-accent m-2 rounded-md p-2 transition-all hover:bg-gray-100"
+          className="m-2 rounded-md p-2 transition-all hover:bg-gray-100 dark:hover:bg-dark-accent"
         >
           Mujeres
         </Link>
         <Link
           href={'/gender/kid'}
-          className="dark:hover:bg-bg-dark-accent m-2 rounded-md p-2 transition-all hover:bg-gray-100"
+          className="m-2 rounded-md p-2 transition-all hover:bg-gray-100 dark:hover:bg-dark-accent"
         >
           Nenes
         </Link>
@@ -55,9 +55,9 @@ export const TopMenu = () => {
 
       {/* Íconos de búsqueda, carrito y botón para cerrar el menú */}
       <div className="flex items-center">
-        <Link href={'/search'} className="mx-2">
+        {/* <Link href={'/search'} className="mx-2">
           <IoSearchOutline className="h-5 w-5" />
-        </Link>
+        </Link> */}
         <Link
           href={`${totalItemsInCart === 0 && loaded ? '/empty' : '/cart'}`}
           className="mx-2"

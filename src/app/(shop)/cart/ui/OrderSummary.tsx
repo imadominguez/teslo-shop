@@ -28,7 +28,7 @@ export const OrderSummary = () => {
 
   // Renderización del resumen de la orden
   return (
-    <div className="sticky top-20 h-fit rounded-xl bg-white p-7 shadow-xl dark:bg-neutral-800">
+    <div className="dark:bg-dark-accent dark:shadow-dark-second sticky top-20 h-fit rounded-xl bg-gray-200 p-7 shadow-lg">
       <h2 className="mb-2 text-2xl">Resumen de orden</h2>
 
       {/* Grid para mostrar la información de la orden */}

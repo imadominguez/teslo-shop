@@ -29,9 +29,9 @@ export const SizeSelector = ({
             key={size}
             onClick={() => onSizeChange(size)}
             className={clsx(
-              'hover:bg-bg-dark-accent text-dark-text mx-1 h-10 w-10 rounded-full p-2 text-lg hover:text-white',
+              'hover:bg-dark-accent mx-1 h-10 w-10 rounded-full p-2 text-lg text-dark-text hover:text-white',
               {
-                ' bg-bg-dark-accent text-white  ': size === selectedSize,
+                ' bg-dark-accent text-white  ': size === selectedSize,
               },
             )}
           >
