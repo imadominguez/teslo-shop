@@ -35,43 +35,43 @@ export default async function OrdersPageAdmin({ searchParams }: Props) {
         </Link>
       </div>
 
-      <div className="mb-10">
+      <div className="mb-10 overflow-x-auto">
         <table className="min-w-full">
-          <thead className="border-b bg-gray-200">
+          <thead className=" dark:bg-dark-accent border-dark-accent border-b bg-gray-200">
             <tr>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 Imagen
               </th>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 Nombre
               </th>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 Precio
               </th>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 Genero
               </th>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 Inventario
               </th>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 Tallas
               </th>
@@ -81,9 +81,9 @@ export default async function OrdersPageAdmin({ searchParams }: Props) {
             {products.map((product) => (
               <tr
                 key={product.id}
-                className="border-b bg-white transition duration-300 ease-in-out hover:bg-gray-100"
+                className="dark:bg-dark-second border-dark-accent  dark:hover:bg-dark border-b bg-white transition duration-300 ease-in-out hover:bg-gray-100"
               >
-                <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+                <td className="whitespace-nowrap px-6 py-4 text-sm font-medium">
                   <Link href={`/product/${product.slug}`}>
                     <ProductImage
                       src={product.ProductImage[0]?.url}
@@ -94,7 +94,7 @@ export default async function OrdersPageAdmin({ searchParams }: Props) {
                     />
                   </Link>
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm font-light text-gray-900">
+                <td className="whitespace-nowrap px-6 py-4 text-sm font-light ">
                   <Link
                     href={`/admin/product/${product.slug}`}
                     className="hover:underline"
@@ -102,24 +102,24 @@ export default async function OrdersPageAdmin({ searchParams }: Props) {
                     {product.title}
                   </Link>
                 </td>
-                <td className=" whitespace-nowrap px-6  py-4 text-sm font-bold  text-gray-900">
+                <td className=" whitespace-nowrap px-6  py-4 text-sm font-bold  ">
                   {currencyFormat(product.price)}
                 </td>
-                <td className=" whitespace-nowrap px-6  py-4 text-sm font-light  text-gray-900">
+                <td className=" whitespace-nowrap px-6  py-4 text-sm font-light  ">
                   {product.gender}
                 </td>
-                <td className=" whitespace-nowrap px-6  py-4 text-sm font-bold  text-gray-900">
+                <td className=" whitespace-nowrap px-6  py-4 text-sm font-bold  ">
                   {product.inStock}
                 </td>
-                <td className=" whitespace-nowrap px-6  py-4 text-sm font-bold  text-gray-900">
+                <td className=" whitespace-nowrap px-6  py-4 text-sm font-bold  ">
                   {product.sizes.join(', ')}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <Pagination totalPages={totalPages} />
       </div>
+      <Pagination totalPages={totalPages} />
     </>
   );
 }

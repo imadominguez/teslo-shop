@@ -25,15 +25,15 @@ export default async function OrdersPageAdmin() {
     if (!status) {
       return (
         <>
-          <IoCardOutline className="text-red-800" />
-          <span className="mx-2 text-red-800">No Pagada</span>
+          <IoCardOutline className="font-bold text-red-800" />
+          <span className="mx-2 font-bold text-red-800">No Pagada</span>
         </>
       );
     }
     return (
       <>
         <IoCardOutline className="text-green-800" />
-        <span className="mx-2 text-green-800">Pagada</span>
+        <span className="mx-2 font-bold text-green-800">Pagada</span>
       </>
     );
   };
@@ -44,29 +44,29 @@ export default async function OrdersPageAdmin() {
 
       <div className="mb-10">
         <table className="min-w-full">
-          <thead className="border-b bg-gray-200 dark:border-gray-500 dark:bg-gray-500">
+          <thead className=" dark:bg-dark-accent border-dark-accent border-b bg-gray-200">
             <tr>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 #ID
               </th>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 Nombre completo
               </th>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 Estado
               </th>
               <th
                 scope="col"
-                className="px-6 py-4 text-left text-sm font-medium text-gray-900"
+                className="px-6 py-4 text-left text-sm font-medium "
               >
                 Opciones
               </th>
@@ -76,18 +76,18 @@ export default async function OrdersPageAdmin() {
             {orders.map((order) => (
               <tr
                 key={order.tax}
-                className="border-b bg-white transition duration-300 ease-in-out hover:bg-gray-100 dark:border-gray-500 dark:bg-gray-400 dark:hover:bg-gray-300"
+                className="dark:bg-dark-second border-dark-accent  dark:hover:bg-dark border-b bg-white transition duration-300 ease-in-out hover:bg-gray-100"
               >
-                <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+                <td className="whitespace-nowrap px-6 py-4 text-sm font-medium ">
                   {order.id.split('-').at(0)}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm font-light text-gray-900">
+                <td className="whitespace-nowrap px-6 py-4 text-sm font-light ">
                   {order.OrderAddress!.firstName} {order.OrderAddress!.lastName}
                 </td>
-                <td className="flex items-center whitespace-nowrap  px-6 py-4 text-sm font-light text-gray-900">
+                <td className="flex items-center whitespace-nowrap  px-6 py-4 text-sm font-light ">
                   {isPaid(order.isPaid)}
                 </td>
-                <td className="px-6 text-sm font-light text-gray-900 ">
+                <td className="px-6 text-sm font-light  ">
                   <Link
                     href={`/orders/${order.id}`}
                     className="hover:underline"
