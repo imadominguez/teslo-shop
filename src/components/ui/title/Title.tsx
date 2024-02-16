@@ -13,7 +13,7 @@ export const Title = ({ title, subtitle, className }: Props) => {
     <div className={`${className} mt-3`}>
       {/* Título principal con estilos de fuente específicos */}
       <h1
-        className={`${font.className} my-7 text-2xl font-semibold antialiased md:text-4xl`}
+        className={`${font.className} mb-3 mt-7 text-2xl font-semibold antialiased md:text-4xl`}
       >
         {title}
       </h1>
