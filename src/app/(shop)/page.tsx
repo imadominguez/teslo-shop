@@ -2,7 +2,7 @@ export const revalidate = 60;
 
 import { Metadata } from 'next';
 import { getPaginatedProductsWidthImages } from '@/actions';
-import { Pagination, ProductGrid, Title } from '@/components';
+import { CategoriesGrid, Pagination, ProductGrid, Title } from '@/components';
 
 export const metadata: Metadata = {
   title: 'Tienda - Todos los productos',
@@ -24,6 +24,8 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <>
+      <CategoriesGrid />
+
       <Title
         title="Tienda"
         subtitle="Todos los productos"
