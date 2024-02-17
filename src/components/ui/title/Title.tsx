@@ -13,13 +13,13 @@ export const Title = ({ title, subtitle, className }: Props) => {
     <div className={`${className ? className : ''} my-3`}>
       {/* Título principal con estilos de fuente específicos */}
       <h1
-        className={`${font.className} mb-3 text-lg font-semibold antialiased md:text-2xl`}
+        className={`${font.className} mb-3 text-2xl font-semibold antialiased md:text-2xl`}
       >
         {title}
       </h1>
 
       {/* Subtítulo opcional con estilos de fuente específicos */}
-      {subtitle && <h3 className="text-sm md:text-xl">{subtitle}</h3>}
+      {subtitle && <h3 className="text-base md:text-xl">{subtitle}</h3>}
     </div>
   );
 };
