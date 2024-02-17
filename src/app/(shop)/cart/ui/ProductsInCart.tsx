@@ -5,7 +5,8 @@ import { redirect } from 'next/navigation';
 import { useCartStore } from '@/store';
 import { ProductImage, QuantitySelector } from '@/components';
 import { ProductItemSkeleton } from '@/components';
-import { IoCartOutline } from 'react-icons/io5';
+import { IoCartOutline, IoTrashOutline } from 'react-icons/io5';
+import { currencyFormat } from '@/utils';
 
 // Componente para mostrar los productos en el carrito
 export const ProductsInCart = () => {
@@ -38,7 +39,7 @@ export const ProductsInCart = () => {
       {productsInCart.map((product) => (
         <div
           key={`${product.slug}-${product.size}${Math.random()}`}
-          className="dark:bg-dark-second mb-5 flex rounded-xl bg-gray-200"
+          className="mx-auto mb-4 flex w-full items-center gap-2 "
         >
           {/* Imagen del producto */}
           <ProductImage
@@ -46,51 +47,55 @@ export const ProductsInCart = () => {
             alt={product.title}
             width={100}
             height={100}
-            style={{ width: '100px', height: '100px' }}
-            className="mr-5 rounded"
+            className="aspect-square w-20 rounded object-cover"
             priority={true}
           />
 
-          <div>
-            {/* Enlace al producto */}
-            <Link
-              className="cursor-pointer font-bold hover:underline"
-              href={`/product/${product.slug}`}
-            >
-              {product.size} - {product.title}
-            </Link>
-
-            {/* Precio por unidad */}
-            <p className="my-2 font-semibold">
-              Precio x unidad: ${product.price}
-            </p>
-
+          <div className="flex flex-1 flex-col items-center text-xs tracking-tighter">
+            <div className="flex w-full flex-col">
+              {/* Enlace al producto */}
+              <Link
+                className="cursor-pointer font-bold hover:underline "
+                href={`/product/${product.slug}`}
+              >
+                {product.title}
+              </Link>
+              <dl className="mt-0.5 space-y-px ">
+                <div>
+                  <dt className="inline">Size: </dt>
+                  <dd className="inline">{product.size}</dd>
+                </div>
+              </dl>
+            </div>
             {/* Precio total */}
-            <p>
-              Precio total: ${(product.price * product.quantity).toFixed(2)}
+            <p className="w-full sm:mt-2">
+              Precio total:{' '}
+              <span className="font-bold">
+                {currencyFormat(product.price * product.quantity)}
+              </span>
             </p>
-
-            {/* Selector de cantidad */}
-            <QuantitySelector
-              quantity={product.quantity}
-              onQuantityChange={(value) =>
-                updateProductQuantity(product, value)
-              }
-            />
-
-            {/* Botón para remover el producto del carrito */}
-            <button
-              onClick={() => removeProductFromCart(product)}
-              className="mt-3 underline"
-            >
-              Remover
-            </button>
+            <div className="flex w-full flex-1 items-center justify-end  gap-2">
+              {/* Selector de cantidad */}
+              <QuantitySelector
+                quantity={product.quantity}
+                onQuantityChange={(value) =>
+                  updateProductQuantity(product, value)
+                }
+              />
+              {/* Botón para remover el producto del carrito */}
+              <button
+                onClick={() => removeProductFromCart(product)}
+                className="btn-danger rounded "
+              >
+                <IoTrashOutline />
+              </button>
+            </div>
           </div>
         </div>
       ))}
       <button
         onClick={clearCart}
-        className=" btn-danger mb-5 flex  items-center justify-center gap-x-2"
+        className=" btn-danger flex items-center justify-center  gap-x-2 rounded font-semibold"
       >
         <IoCartOutline size={24} />
         Vaciar carrito

@@ -76,5 +76,5 @@ body::-webkit-scrollbar-thumb {
 }
 
 .btn-danger {
-  @apply bg-red-600 px-4 py-2 text-white transition-all hover:bg-red-800;
+  @apply rounded bg-red-600 px-4 py-2 text-white transition-all hover:bg-red-800;
 }

@@ -7,17 +7,17 @@ export const Footer = () => {
     <footer className=" flex h-full w-full justify-center bg-gradient-to-t from-gray-500/30 to-transparent text-center 2xl:bg-transparent">
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-center ">
-          <p className={`${font.className} text-2xl`}>
+          <p className={`${font.className} text-lg md:text-2xl`}>
             <span className="font-bold">Teslo</span> | Shop
           </p>
         </div>
 
-        <p className="mx-auto mt-6 max-w-md text-center leading-relaxed ">
+        <p className="mx-auto mt-6 max-w-md text-center text-base leading-relaxed md:text-lg ">
           Explora nuestra amplia selección de productos en nuestra tienda en
           línea.
         </p>
 
-        <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
+        <ul className="mt-12 flex flex-wrap justify-center gap-6 text-sm md:gap-8 lg:gap-12">
           <li>
             <Link className=" transition hover:opacity-80" href={'/gender/men'}>
               Hombres
@@ -40,7 +40,7 @@ export const Footer = () => {
           </li>
         </ul>
 
-        <ul className="mt-12 flex justify-center gap-6 md:gap-8">
+        <ul className="mt-12 flex items-center justify-center gap-6 text-xs md:gap-8">
           <li>
             <Link
               href="https://github.com/imadominguez/teslo-shop"

@@ -57,7 +57,7 @@ export default async function ProductPage({ params }: Props) {
   }
 
   return (
-    <div className="mb-20 mt-5 grid gap-3  md:grid-cols-3">
+    <div className="fade-in mb-20 mt-5 grid gap-3  md:grid-cols-3">
       {/* Slideshow */}
       <div className="col-span-1  md:col-span-2">
         {/* Desktop slideshow */}
@@ -90,7 +90,7 @@ export default async function ProductPage({ params }: Props) {
         <AddToCart product={product} />
         {/* Descripcion del producto  */}
         <h3 className="font-bold ">Descripcion</h3>
-        <p className="text-dark-text text-pretty font-light">
+        <p className="text-pretty font-light text-dark-text">
           {product.description}
         </p>
       </div>

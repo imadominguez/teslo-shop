@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Product } from '@/interfaces';
+import { currencyFormat } from '@/utils';
 
 // Propiedades esperadas para el componente ProductGridItem
 interface Props {
@@ -59,10 +60,13 @@ export const ProductGridItem = ({ product }: Props) => {
   }
 
   return (
-    // Contenedor con efecto de desvanecimiento y ocultamiento de desbordamiento
-    <div className="fade-in  overflow-hidden">
-      {/* Enlace a la página del producto con imagen */}
-      <Link href={`/product/${product.slug}`}>
+    <Link
+      href={`/product/${product.slug}`}
+      className="fade-in group block overflow-hidden"
+    >
+      <div className="relative">
+        {/* Enlace a la página del producto con imagen */}
+
         <Image
           src={displayImage}
           alt={product.title}
@@ -73,18 +77,17 @@ export const ProductGridItem = ({ product }: Props) => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         />
-      </Link>
-
-      {/* Información del producto (título y precio) */}
-      <div className="flex flex-col p-4">
-        <Link
-          href={`/product/${product.slug}`}
-          className="text-xl font-bold dark:text-gray-400"
-        >
-          {product.title}
-        </Link>
-        <span className="font-bold">${product.price.toFixed(2)}</span>
       </div>
-    </div>
+
+      <div className="b relative pt-3">
+        <h3 className="text-sm group-hover:underline group-hover:underline-offset-4 dark:text-dark-text">
+          {product.title}
+        </h3>
+
+        <p className="mt-1.5 text-sm tracking-wide dark:text-dark-text">
+          {currencyFormat(product.price)}
+        </p>
+      </div>
+    </Link>
   );
 };
