@@ -7,7 +7,7 @@ export const CategoriesGrid = async () => {
   const { men, women, ok, kid } = await getProductImageRandomByCategorie();
   return (
     <div
-      className={`${font.className} fade-in mx-auto my-5 grid max-w-6xl grid-cols-1 gap-5 px-5 sm:my-10 sm:grid-cols-3 md:my-14 lg:my-20`}
+      className={`${font.className} fade-in mx-auto my-10 mt-5 grid max-w-6xl grid-cols-1 gap-5 px-5  sm:grid-cols-3 md:my-14 lg:my-20`}
     >
       <div className="col-span-1 overflow-hidden rounded   ">
         <Link href={`/gender/men`} className="group relative block ">
