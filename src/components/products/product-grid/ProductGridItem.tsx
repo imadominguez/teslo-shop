@@ -62,7 +62,7 @@ export const ProductGridItem = ({ product }: Props) => {
   return (
     <Link
       href={`/product/${product.slug}`}
-      className="group block overflow-hidden"
+      className="fade-in group block overflow-hidden"
     >
       <div className="relative">
         {/* Enlace a la página del producto con imagen */}

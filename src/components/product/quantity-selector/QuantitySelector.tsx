@@ -30,20 +30,26 @@ export const QuantitySelector = ({
 
   return (
     // Contenedor flex con botones para incrementar y decrementar la cantidad
-    <div className="flex">
+    <div className="flex items-center rounded ">
       {/* Botón para decrementar la cantidad */}
-      <button onClick={() => onQuantityValue(-1)}>
-        <IoRemoveCircleOutline size={30} />
+      <button
+        onClick={() => onQuantityValue(-1)}
+        className=" leading-10  transition hover:opacity-75"
+      >
+        <IoRemoveCircleOutline className="h-5 w-5" />
       </button>
 
       {/* Visualización de la cantidad actual */}
-      <span className="bg-dark-accent mx-3 w-20 rounded px-5  py-1 text-center text-white">
+      <span className="mx-3 w-20 rounded bg-dark-accent px-5  py-1 text-center text-white">
         {quantity}
       </span>
 
       {/* Botón para incrementar la cantidad */}
-      <button onClick={() => onQuantityValue(+1)}>
-        <IoAddCircleOutline size={30} />
+      <button
+        onClick={() => onQuantityValue(+1)}
+        className=" leading-10  transition hover:opacity-75"
+      >
+        <IoAddCircleOutline className="h-5 w-5" />
       </button>
     </div>
   );
