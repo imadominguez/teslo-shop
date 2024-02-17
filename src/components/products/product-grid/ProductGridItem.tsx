@@ -84,7 +84,7 @@ export const ProductGridItem = ({ product }: Props) => {
           {product.title}
         </h3>
 
-        <p className="mt-1.5 tracking-wide dark:text-dark-text">
+        <p className="mt-1.5 text-sm tracking-wide dark:text-dark-text">
           {currencyFormat(product.price)}
         </p>
       </div>
