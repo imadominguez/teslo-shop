@@ -17,18 +17,19 @@ export default function CartPage() {
     <div className="mb-44 flex items-center justify-center px-10 sm:px-0">
       <div className="flex w-[1000px] flex-col ">
         <Title title="Carrito de compra" />
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 ">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 ">
           {/* Carrito */}
           <div className="mt-5 flex flex-col ">
-            <span className="text-xl">Agregar mas items</span>
-            <Link href={'/'} className="mb-5 underline">
+            <Link href={'/'} className="btn-primary mb-5 w-fit">
               Continua comprando
             </Link>
 
             <ProductsInCart />
           </div>
-          {/* Summary */}
-          <OrderSummary />
+          <div className="flex w-full justify-end">
+            {/* Summary */}
+            <OrderSummary />
+          </div>
         </div>
       </div>
     </div>
