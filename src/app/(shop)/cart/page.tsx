@@ -14,19 +14,19 @@ export const metadata: Metadata = {
 
 export default function CartPage() {
   return (
-    <div className="mb-44 flex items-center justify-center px-10 sm:px-0">
-      <div className="flex w-[1000px] flex-col ">
-        <Title title="Carrito de compra" />
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 ">
+    <div className=" flex items-center justify-center px-5">
+      <div className="flex w-[1000px]  flex-col ">
+        <Title title="Carrito de compra" subtitle="Articulos en tu carrito" />
+        <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 ">
           {/* Carrito */}
-          <div className="mt-5 flex flex-col ">
-            <Link href={'/'} className="btn-primary mb-5 w-fit">
+          <div className="flex flex-col ">
+            <Link href={'/'} className="btn-primary mb-5 w-fit text-xs">
               Continua comprando
             </Link>
 
             <ProductsInCart />
           </div>
-          <div className="flex w-full justify-end">
+          <div className="flex w-full justify-end md:justify-center">
             {/* Summary */}
             <OrderSummary />
           </div>

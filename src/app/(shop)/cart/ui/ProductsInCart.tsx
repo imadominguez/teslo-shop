@@ -39,7 +39,7 @@ export const ProductsInCart = () => {
       {productsInCart.map((product) => (
         <div
           key={`${product.slug}-${product.size}${Math.random()}`}
-          className=" mx-auto mb-4 flex w-full max-w-96 flex-col items-center gap-4 rounded sm:max-w-none sm:flex-row "
+          className="mx-auto mb-4 flex w-full items-center gap-2 "
         >
           {/* Imagen del producto */}
           <ProductImage
@@ -47,29 +47,34 @@ export const ProductsInCart = () => {
             alt={product.title}
             width={100}
             height={100}
-            // style={{ width: '100px', height: '100px' }}
-            className="w-full rounded object-cover sm:size-28"
+            className="aspect-square w-20 rounded object-cover"
             priority={true}
           />
 
-          <div className="flex w-full flex-1 flex-col items-center gap-4 px-3 pb-3 sm:gap-0">
+          <div className="flex flex-1 flex-col items-center text-xs tracking-tighter">
             <div className="flex w-full flex-col">
               {/* Enlace al producto */}
               <Link
-                className="cursor-pointer text-sm font-bold hover:underline "
+                className="cursor-pointer font-bold hover:underline "
                 href={`/product/${product.slug}`}
               >
                 {product.title}
               </Link>
-              <dl className="mt-0.5 space-y-px text-sm">
+              <dl className="mt-0.5 space-y-px ">
                 <div>
                   <dt className="inline">Size: </dt>
                   <dd className="inline">{product.size}</dd>
                 </div>
               </dl>
             </div>
-
-            <div className="flex w-full flex-1 items-center justify-center gap-2 sm:justify-end">
+            {/* Precio total */}
+            <p className="w-full sm:mt-2">
+              Precio total:{' '}
+              <span className="font-bold">
+                {currencyFormat(product.price * product.quantity)}
+              </span>
+            </p>
+            <div className="flex w-full flex-1 items-center justify-end  gap-2">
               {/* Selector de cantidad */}
               <QuantitySelector
                 quantity={product.quantity}
@@ -85,20 +90,12 @@ export const ProductsInCart = () => {
                 <IoTrashOutline />
               </button>
             </div>
-
-            {/* Precio total */}
-            <p className="w-full text-center text-sm sm:mt-2 sm:text-right">
-              Precio total:{' '}
-              <span className="font-bold">
-                {currencyFormat(product.price * product.quantity)}
-              </span>
-            </p>
           </div>
         </div>
       ))}
       <button
         onClick={clearCart}
-        className=" btn-danger mb-5 flex  items-center justify-center gap-x-2"
+        className=" btn-danger flex items-center justify-center  gap-x-2 rounded font-semibold"
       >
         <IoCartOutline size={24} />
         Vaciar carrito
