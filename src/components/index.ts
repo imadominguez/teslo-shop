@@ -1,5 +1,6 @@
 export { OrderStatus } from './orders/OrderStatus';
 
+export { CategoriesGrid } from './category/categories-grid';
 export { PaypalButton } from './paypal/PaypalButton';
 
 export { ProductImage } from './product/product-image/ProductImage';

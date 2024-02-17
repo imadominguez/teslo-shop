@@ -22,6 +22,7 @@ export * from './products/create-update-product';
 export * from './products/delete-product-image';
 export * from './products/get-all-products';
 export * from './products/get-product-by-slug';
+export * from './products/get-product-image-random-by-categorie';
 export * from './products/get-stock-by-slug';
 export * from './products/product-actions';
 
