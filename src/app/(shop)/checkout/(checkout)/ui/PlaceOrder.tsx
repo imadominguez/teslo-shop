@@ -58,10 +58,12 @@ export const PlaceOrder = () => {
   }
 
   return (
-    <div className="dark:bg-dark-second dark:shadow-dark-second flex flex-col justify-between rounded-xl bg-gray-200 p-7 shadow-lg">
-      <h2 className="mb-2 text-2xl font-semibold">Direccion de entrega</h2>
-      <div className="mb-10 flex flex-col ">
-        <p className="text-xl">
+    <div className="flex flex-col justify-between rounded-xl bg-gray-200 p-7 shadow-lg dark:bg-dark-second dark:shadow-dark-second">
+      <h2 className="mb-2 text-lg font-semibold md:text-2xl">
+        Direccion de entrega
+      </h2>
+      <div className="mb-5 flex flex-col text-sm ">
+        <p className="">
           {address.firstName} {address.lastName}
         </p>
         <span>{address.address}</span>
@@ -73,11 +75,11 @@ export const PlaceOrder = () => {
 
       {/* Divider */}
 
-      <div className="mb-10 h-0.5 w-full rounded bg-gray-200" />
+      <div className="mb-5 h-0.5 w-full rounded bg-gray-200" />
 
-      <h2 className="mb-2 text-2xl font-semibold">Resumen de orden</h2>
+      <h2 className="mb-2 text-lg  font-semibold">Resumen de orden</h2>
 
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-2 gap-2 text-sm">
         <span>No Productos</span>
         {/* Cantidad de productos en el carrito */}
         <span className="text-right">
@@ -86,19 +88,23 @@ export const PlaceOrder = () => {
 
         <span>Subtotal</span>
         {/* Subtotal de la orden */}
-        <span className="text-right">{currencyFormat(subTotal)}</span>
+        <span className="text-right font-semibold">
+          {currencyFormat(subTotal)}
+        </span>
 
         <span>Impuestos {'15%'}</span>
         {/* Impuestos aplicados a la orden */}
-        <span className="text-right">{currencyFormat(tax)}</span>
+        <span className="text-right font-semibold">{currencyFormat(tax)}</span>
 
-        <span className="mt-5 text-2xl">Total: </span>
+        <span className="mt-5 ">Total: </span>
         {/* Total de la orden */}
-        <span className="mt-5 text-right text-xl">{currencyFormat(total)}</span>
+        <span className="mt-5 text-right font-semibold">
+          {currencyFormat(total)}
+        </span>
       </div>
 
       <div className="mb-2 mt-5 w-full">
-        <p className="mb-5 mt-5 text-balance text-center text-sm">
+        <p className="mb-5 mt-5 text-pretty text-xs">
           {/* Disclaimer */}
           Al hacer click en "Colocar Orden", aceptas nuestros{' '}
           <a href="" className=" underline">

@@ -30,7 +30,7 @@ export const ProductsInCart = () => {
       {productsInCart.map((product) => (
         <div
           key={`${product.slug}-${product.size}${Math.random()}`}
-          className="dark:bg-dark-second mb-5 flex bg-gray-200"
+          className=" mb-5 flex "
         >
           {/* Imagen del producto */}
           <Image
@@ -43,18 +43,19 @@ export const ProductsInCart = () => {
             priority
           />
 
-          <div>
-            <span className="font-bold">
-              {product.size} - {product.title} ({product.quantity})
+          <div className="flex flex-1 flex-col justify-between">
+            <span className="text-sm font-bold tracking-tighter">
+              {product.title}
             </span>
-
             {/* Precio por unidad */}
-            {/* <p className="my-2 font-semibold">
-              Precio x unidad: ${product.price}
-            </p> */}
+            <p className="text-xs font-semibold">
+              Cantidad: {product.quantity}
+            </p>
+            {/* Precio por unidad */}
+            <p className="text-xs font-semibold">Size: {product.size}</p>
 
             {/* Precio total */}
-            <p className="font-bold">
+            <p className="text-right text-xs font-bold">
               {currencyFormat(product.price * product.quantity)}
             </p>
           </div>
