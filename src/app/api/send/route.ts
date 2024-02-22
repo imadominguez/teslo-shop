@@ -10,7 +10,10 @@ export async function POST() {
       from: 'onboarding@resend.dev',
       to: 'imanol.desarrolloweb@gmail.com',
       subject: 'Hello world',
-      react: EmailTemplate({ firstName: 'John' }),
+      react: EmailTemplate({
+        firstName: 'John',
+        email: 'imanol.desarrolloweb@gmail.com',
+      }),
     });
 
     return Response.json(data);
