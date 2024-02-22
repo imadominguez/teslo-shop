@@ -7,7 +7,7 @@ export default function ShopLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="relative min-h-screen bg-white dark:bg-dark dark:text-dark-text">
+    <main className="dark:bg-bg-dark-100 bg-bg-100 dark:text-text-dark-100 relative min-h-screen">
       <TopMenu />
       <Sidebar />
       <div className="mx-auto min-h-[calc(100vh-400px)] max-w-7xl sm:px-5 md:px-10">

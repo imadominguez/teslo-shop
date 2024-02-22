@@ -15,11 +15,42 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        dark: '#121212',
-        'dark-second': '#2b2b2b',
-        'dark-accent': '#454545',
-        'dark-text': '7a7a7a',
-        'dark-text-light': '#a8a8a8',
+        primary: {
+          100: '#0077C2',
+          200: '#59a5f5',
+          300: '#c8ffff',
+          dark: {
+            100: '#0085ff',
+            200: '#69b4ff',
+            300: '#e0ffff',
+          },
+        },
+        accent: {
+          100: '#00BFFF',
+          200: '#00619a',
+          dark: {
+            100: '#006fff',
+            200: '#e1ffff',
+          },
+        },
+        text: {
+          100: '#333333',
+          200: '#5c5c5c',
+          dark: {
+            100: '#FFFFFF',
+            200: '#9e9e9e',
+          },
+        },
+        bg: {
+          100: '#FFFFFF',
+          200: '#f5f5f5',
+          300: '#cccccc',
+          dark: {
+            100: '#1E1E1E',
+            200: '#2d2d2d',
+            300: '#454545',
+          },
+        },
       },
     },
   },
