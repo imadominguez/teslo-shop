@@ -1,4 +1,4 @@
-import { EmailTemplate } from '@/components';
+import { EmailTemplate } from '@/components/email/email-template';
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -15,6 +15,7 @@ export async function POST() {
 
     return Response.json(data);
   } catch (error) {
+    console.log(error);
     return Response.json({ error });
   }
 }
