@@ -21,14 +21,14 @@ export default function LoginForm() {
     <form action={dispatch} className="flex flex-col">
       <label htmlFor="email">Correo electrónico</label>
       <input
-        className="dark:bg-dark-second dark:border-dark-second mb-5  rounded border bg-gray-200 px-5 py-2"
+        className="mb-5 rounded border  bg-gray-200 px-5 py-2   dark:border-bg-dark-300 dark:bg-bg-dark-300"
         type="email"
         name="email"
       />
 
       <label htmlFor="email">Contraseña</label>
       <input
-        className="dark:bg-dark-second dark:border-dark-second mb-5  rounded border bg-gray-200 px-5 py-2"
+        className="mb-5 rounded border  bg-gray-200 px-5 py-2   dark:border-bg-dark-300 dark:bg-bg-dark-300"
         type="password"
         name="password"
       />
@@ -61,7 +61,7 @@ export default function LoginForm() {
       {/* divisor l ine */}
       <div className="my-5 flex items-center">
         <div className="flex-1 border-t border-gray-500"></div>
-        <div className="px-2 dark:text-dark-text ">O</div>
+        <div className="dark:text-dark-text px-2 ">O</div>
         <div className="flex-1 border-t border-gray-500"></div>
       </div>
 

@@ -39,7 +39,7 @@ export const RegisterForm = () => {
       <label htmlFor="text">Nombre completo</label>
       <input
         className={clsx(
-          'dark:bg-dark-second dark:border-dark-second mb-5  rounded border bg-gray-200 px-5 py-2',
+          'mb-5 rounded border  bg-gray-200 px-5 py-2 dark:border-bg-dark-300 dark:bg-bg-dark-300',
           {
             'border-red-500': errors.name,
           },
@@ -51,7 +51,7 @@ export const RegisterForm = () => {
       <label htmlFor="email">Correo electronico</label>
       <input
         className={clsx(
-          'dark:bg-dark-second dark:border-dark-second mb-5  rounded border bg-gray-200 px-5 py-2',
+          'mb-5 rounded border  bg-gray-200 px-5 py-2 dark:border-bg-dark-300 dark:bg-bg-dark-300',
           {
             'border-red-500': errors.email,
           },
@@ -62,7 +62,7 @@ export const RegisterForm = () => {
       <label htmlFor="email">Contraseña</label>
       <input
         className={clsx(
-          'dark:bg-dark-second dark:border-dark-second mb-5  rounded border bg-gray-200 px-5 py-2',
+          'mb-5 rounded border  bg-gray-200 px-5 py-2 dark:border-bg-dark-300 dark:bg-bg-dark-300',
           {
             'border-red-500': errors.password,
           },
@@ -77,9 +77,9 @@ export const RegisterForm = () => {
 
       {/* divisor l ine */}
       <div className="my-5 flex items-center">
-        <div className="flex-1 border-t border-gray-500"></div>
-        <div className="px-2 text-gray-800">O</div>
-        <div className="flex-1 border-t border-gray-500"></div>
+        <div className="flex-1 border-t "></div>
+        <div className="px-2">O</div>
+        <div className="flex-1 border-t "></div>
       </div>
 
       <Link href="/auth/login" className="btn-secondary text-center">
