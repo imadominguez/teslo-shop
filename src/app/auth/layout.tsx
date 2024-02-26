@@ -12,8 +12,8 @@ export default async function ShopLayout({
     redirect('/');
   }
   return (
-    <main className="dark:bg-dark relative flex min-h-screen justify-center bg-white dark:text-dark-text">
-      <div className="w-full px-10 sm:w-[350px]">{children}</div>
+    <main className="relative flex min-h-screen justify-center bg-white dark:bg-dark dark:text-dark-text">
+      <div className="w-full px-10 sm:w-[450px]">{children}</div>
     </main>
   );
 }
