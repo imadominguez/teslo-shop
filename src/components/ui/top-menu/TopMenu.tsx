@@ -35,19 +35,19 @@ export const TopMenu = () => {
       <div className="hidden sm:block">
         <Link
           href={'/gender/men'}
-          className="dark:hover:bg-dark-bg-300 m-2 rounded-md p-2 transition-all hover:bg-gray-100"
+          className="m-2 rounded-md p-2 transition-all hover:bg-gray-100 dark:hover:bg-bg-dark-300"
         >
           Hombres
         </Link>
         <Link
           href={'/gender/women'}
-          className="dark:hover:bg-dark-bg-300 m-2 rounded-md p-2 transition-all hover:bg-gray-100"
+          className="m-2 rounded-md p-2 transition-all hover:bg-gray-100 dark:hover:bg-bg-dark-300"
         >
           Mujeres
         </Link>
         <Link
           href={'/gender/kid'}
-          className="dark:hover:bg-dark-bg-300 m-2 rounded-md p-2 transition-all hover:bg-gray-100"
+          className="m-2 rounded-md p-2 transition-all hover:bg-gray-100 dark:hover:bg-bg-dark-300"
         >
           Nenes
         </Link>

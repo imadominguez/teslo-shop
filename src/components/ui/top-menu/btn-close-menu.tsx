@@ -11,7 +11,7 @@ export const BtnCloseMenu = () => {
     // Botón que ejecuta la función para abrir el menú lateral al hacer clic
     <button
       onClick={() => openMenu()}
-      className="dark:hover:bg-dark-bg-300 m-2 rounded-md p-2 transition-all hover:bg-gray-100"
+      className="m-2 rounded-md p-2 transition-all hover:bg-gray-100 dark:hover:bg-bg-dark-300"
     >
       Menu
     </button>
