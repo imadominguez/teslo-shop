@@ -33,13 +33,22 @@ Sigue estos pasos para configurar el proyecto en tu entorno de desarrollo:
 
 ### Cuenta de administrador
 
-- usuario: user-admin@gmail.com
-- constraseña: 123456
+- **Usuario:** user-admin@gmail.com
+- **Contraseña:** 123456
 
 ### Cuenta de cliente
 
-- usuario: user-user@gmail.com
-- constraseña: 123456
+- **Usuario:** user-user@gmail.com
+- **Contraseña:** 123456
+
+## Acceso a la Pasarela de Pagos de PayPal en Modo de Prueba
+
+Para probar el pago a través de la pasarela de pagos en modo de prueba, puedes utilizar la siguiente cuenta de PayPal:
+
+- **Usuario:** sb-opbsh29468904@personal.example.com
+- **Contraseña:** Abc123456
+
+Utiliza esta cuenta para realizar pruebas de pago y verificar la funcionalidad de la pasarela de pagos en el entorno de desarrollo de Teslo-Shop. Recuerda que esta cuenta es exclusivamente para pruebas y no debe utilizarse en un entorno de producción.
 
 ## Acceso al Dashboard
 
