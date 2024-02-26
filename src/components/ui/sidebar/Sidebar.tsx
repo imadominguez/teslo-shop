@@ -35,7 +35,7 @@ export const Sidebar = () => {
     <div className="">
       {/* Fondo negro transparente */}
       {isSideMenuOpen && (
-        <div className="fixed left-0 top-0 z-40 h-screen w-screen bg-black opacity-30" />
+        <div className="fixed left-0 top-0 z-40 h-screen w-screen bg-black opacity-30 transition-all duration-100" />
       )}
 
       {/* Desenfoque */}
@@ -50,17 +50,17 @@ export const Sidebar = () => {
 
       <aside
         className={clsx(
-          'fixed right-0 top-0 z-50 h-screen w-[375px] transform overflow-auto overflow-x-hidden bg-white p-5 transition-all duration-300 dark:bg-dark',
+          'fixed right-0 top-0 z-50 h-screen w-[375px] transform overflow-auto overflow-x-hidden bg-white p-5 transition-all duration-300 dark:bg-bg-dark-200',
           {
             'translate-x-full': !isSideMenuOpen,
-            'translate-x-0 shadow-2xl shadow-dark': isSideMenuOpen,
+            'shadow-dark translate-x-0 shadow-2xl': isSideMenuOpen,
           },
         )}
       >
         {/* Botón para cerrar el menú */}
         <div className="flex items-end justify-end">
           <IoCloseOutline
-            className="h-10 w-10 cursor-pointer"
+            className="h-5 w-5 cursor-pointer transition-transform duration-300  hover:rotate-90 hover:scale-150"
             onClick={() => closeSideMenu()}
           />
         </div>
@@ -88,9 +88,9 @@ export const Sidebar = () => {
             </div>
             <Link
               className={clsx(
-                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-dark-second dark:hover:text-gray-200',
+                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-bg-dark-300 dark:hover:text-gray-200',
                 {
-                  'bg-gray-100 dark:bg-dark-second ': pathname === '/profile',
+                  'dark:bg-dark-second bg-gray-100 ': pathname === '/profile',
                 },
               )}
               href={'/profile'}
@@ -104,9 +104,9 @@ export const Sidebar = () => {
               href={'/orders'}
               onClick={() => closeSideMenu()}
               className={clsx(
-                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-dark-second dark:hover:text-gray-200',
+                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-bg-dark-300 dark:hover:text-gray-200',
                 {
-                  'bg-gray-100 dark:bg-dark-second ': pathname === '/orders',
+                  'dark:bg-dark-second bg-gray-100 ': pathname === '/orders',
                 },
               )}
             >
@@ -122,9 +122,9 @@ export const Sidebar = () => {
               href={'/auth/login'}
               onClick={() => closeSideMenu()}
               className={clsx(
-                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-dark-second dark:hover:text-gray-200',
+                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-bg-dark-300 dark:hover:text-gray-200',
                 {
-                  'bg-gray-100 dark:bg-dark-second ':
+                  'dark:bg-dark-second bg-gray-100 ':
                     pathname === '/auth/login',
                 },
               )}
@@ -138,7 +138,7 @@ export const Sidebar = () => {
         {isAunthenticated && (
           <button
             onClick={() => logout()}
-            className="mt-5 flex w-full transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-dark-second dark:hover:text-gray-200"
+            className="mt-5 flex w-full transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-bg-dark-300 dark:hover:text-gray-200"
           >
             <IoLogOutOutline className="h-5 w-5" />
             <span className="mx-4 font-medium">Salir</span>
@@ -155,9 +155,9 @@ export const Sidebar = () => {
               href={'/admin/products'}
               onClick={() => closeSideMenu()}
               className={clsx(
-                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-dark-second dark:hover:text-gray-200',
+                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-bg-dark-300 dark:hover:text-gray-200',
                 {
-                  'bg-gray-100 dark:bg-dark-second ':
+                  'dark:bg-dark-second bg-gray-100 ':
                     pathname === '/admin/products',
                 },
               )}
@@ -169,9 +169,9 @@ export const Sidebar = () => {
               href={'/admin/orders'}
               onClick={() => closeSideMenu()}
               className={clsx(
-                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-dark-second dark:hover:text-gray-200',
+                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-bg-dark-300 dark:hover:text-gray-200',
                 {
-                  'bg-gray-100 dark:bg-dark-second ':
+                  'dark:bg-dark-second bg-gray-100 ':
                     pathname === '/admin/orders',
                 },
               )}
@@ -183,9 +183,9 @@ export const Sidebar = () => {
               href={'/admin/users'}
               onClick={() => closeSideMenu()}
               className={clsx(
-                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-dark-second dark:hover:text-gray-200',
+                'mt-5 flex transform items-center rounded-lg px-4 py-2 text-gray-600 transition-colors duration-300 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-bg-dark-300 dark:hover:text-gray-200',
                 {
-                  'bg-gray-100 dark:bg-dark-second ':
+                  'dark:bg-dark-second bg-gray-100 ':
                     pathname === '/admin/users',
                 },
               )}
